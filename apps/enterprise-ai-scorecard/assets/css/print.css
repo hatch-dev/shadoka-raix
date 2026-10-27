@@ -1,0 +1,69 @@
+/* Print.
+   A second route to paper, alongside the jsPDF document the Download PDF button
+   draws: a browser's "Save as PDF" needs no library on the server and no
+   headless Chrome, and a XAMPP deployment should not have to install either.
+
+   Everything that is screen furniture comes off; what remains is the argument:
+   the level, the six dimensions, and which of them is weakest. */
+
+@media print {
+  /* Light ground. The dark theme is a screen decision and costs a fortune in
+     toner; the ink/gold palette survives as accents on white. */
+  :root{
+    --ink:#111820; --ink-2:#FFFFFF; --ink-3:#FFFFFF;
+    --paper:#111820; --stone:#4A5866; --stone-2:#6B7885;
+    --rule:#C8D2DC; --rule-soft:#E2E8EE;
+  }
+
+  html, body { background:#fff !important; color:#111820 !important; font-size:11pt; }
+
+  /* Screen-only furniture. */
+  nav, footer, .cta, .toast, .cursor, .cursor-ring, .modal-bg, #modalRoot,
+  .nav-row, .guide, .prog, .callout, .hero-bg,
+  [data-open-help], .btn, button { display:none !important; }
+
+  .view { display:block !important; }
+  .wrap, .wrap-n { max-width:none; padding:0; }
+  body { padding-top:0; }
+
+  /* Let the result breathe across the page rather than sit in a screen column. */
+  .score-hero { display:block; }
+  .hero-left { display:block; text-align:left; }
+  .radar-wrap { max-width:74mm; margin:6mm 0; page-break-inside:avoid; }
+
+  /* The two donuts are SVG and print perfectly well, but side by side they eat
+     a third of the first page for two numbers the text beside them states. */
+  .donuts { display:none !important; }
+
+  .level { font-size:44pt; line-height:1; }
+  .level-sub, .meanbox .k { color:#4A5866 !important; }
+  .floor-note {
+    border:1pt solid #C8D2DC; border-left:3pt solid #C56A18;
+    padding:3mm 4mm; margin:4mm 0; max-width:none; page-break-inside:avoid;
+  }
+
+  /* The bars are the summary someone will actually read on paper. */
+  .brow { page-break-inside:avoid; }
+  .brow .track { border:0.5pt solid #C8D2DC; }
+  .bars { margin:4mm 0; }
+
+  .analysis, .cad, .warnbox { page-break-inside:avoid; }
+  h2.title { font-size:16pt; }
+  h3.sub { font-size:12pt; margin-top:5mm; }
+  hr.rule { border-top:0.5pt solid #C8D2DC; margin:5mm 0; }
+
+  /* A printed page loses the address it came from, so put it back — along with
+     the one sentence that stops a reader taking the level for the floor. */
+  .print-footer { display:block !important; margin-top:8mm;
+    border-top:0.5pt solid #C8D2DC; padding-top:3mm;
+    font-size:8pt; color:#6B7885; }
+
+  a[href]::after { content:""; }   /* no URL spam after every link */
+
+  @page { margin:16mm 14mm; }
+}
+
+/* NOTE: the rule hiding .print-footer on screen lives in scorecard.css, not
+   here. This stylesheet is loaded with media="print", so a display:none written
+   here would only ever apply while printing — which is the one time the footer
+   must be visible. */

@@ -1,0 +1,916 @@
+{
+  "slug": "enterprise-ai-scorecard",
+  "version": "1.0",
+  "name": "AI Readiness — The Enterprise Scorecard",
+  "subtitle": "The Enterprise Scorecard",
+  "scale": "5 levels",
+  "scoring_rule": "mean",
+  "rule_text": "organisation level = band of the overall average of all answers; the floor is the weakest scored dimension",
+  "source": "Enterprise_AI_Scorecard/index.html",
+  "extracted_at": "2026-09-23T07:06:53.937Z",
+  "rungs": [
+    {
+      "value": 1,
+      "name": "Undeveloped",
+      "description": "Little or nothing is in place.",
+      "colour_hex": "#D2564E",
+      "colour_var": "var(--r1)"
+    },
+    {
+      "value": 2,
+      "name": "Emerging",
+      "description": "Present in places, carried by individuals.",
+      "colour_hex": "#8A9BB0",
+      "colour_var": "var(--r2)"
+    },
+    {
+      "value": 3,
+      "name": "Developing",
+      "description": "Being built, but not yet consistent.",
+      "colour_hex": "#3D82C4",
+      "colour_var": "var(--r3)"
+    },
+    {
+      "value": 4,
+      "name": "Established",
+      "description": "In place and generally reliable, with some gaps.",
+      "colour_hex": "#4FA97C",
+      "colour_var": "var(--r4)"
+    },
+    {
+      "value": 5,
+      "name": "Embedded",
+      "description": "Fully reliable.",
+      "colour_hex": "#E8933F",
+      "colour_var": "var(--r5)"
+    }
+  ],
+  "bands": [
+    {
+      "rung_value": 1,
+      "min": null,
+      "max": 1.8
+    },
+    {
+      "rung_value": 2,
+      "min": 1.8,
+      "max": 2.6
+    },
+    {
+      "rung_value": 3,
+      "min": 2.6,
+      "max": 3.4
+    },
+    {
+      "rung_value": 4,
+      "min": 3.4,
+      "max": 4.2
+    },
+    {
+      "rung_value": 5,
+      "min": 4.2,
+      "max": null
+    }
+  ],
+  "dimensions": [
+    {
+      "position": 1,
+      "code": "PIP",
+      "name": "AI Innovation Pipeline",
+      "description": "Whether AI initiatives start from real business problems, whether anyone can see everything that is running and what it costs, whether someone has clear authority to advance or stop a project, whether leaders are rewarded for running experiments well, and whether funding is released in stages.",
+      "pressing_question": "What problem does this remove, and who has the authority to stop it?",
+      "summary_line": "Whether AI initiatives are chosen, funded, and terminated deliberately.",
+      "failure_line": "You can list the pilots. You cannot name one that was stopped.",
+      "guide": {
+        "what": "An AI innovation pipeline is the system an organization uses to move AI ideas from proposal to deployment in a disciplined way. It takes in candidate initiatives, ranks them against what the organization is trying to achieve, funds the promising ones in stages, reviews them at fixed points, and stops the ones that are not working so that money and attention move to the ones that are. It treats the organization’s AI initiatives as one managed portfolio of bets across different time horizons, with a named person accountable for the whole, rather than as a list of projects or a single all-or-nothing program.",
+        "why": "Innovation efforts fail for predictable reasons that rarely have anything to do with the quality of the ideas or the technology. They fail because the conditions needed to sustain them are not in place. Most organizations have a portfolio problem rather than an idea problem. They either bet everything on a single transformative initiative or scatter resources across dozens of underfunded experiments, and nobody can say who has the authority to stop the pilot that is always almost ready. In unstable markets the temptation is to avoid change and pursue a defensive strategy, and it has to be resisted. The organizations that gain ground now will be difficult to catch, and those that fall behind may find they have missed their chance for good.",
+        "how": "Start by working out what the organization is actually trying to achieve and which problems stand in the way, and then find out what AI activity is already running and what it costs, since most organizations have never looked. Give the pipeline a single owner with the authority to fund, advance, and stop initiatives, and settle who holds each of those decisions. Score the candidate initiatives on strategic fit, feasibility, cost, risk, and value, fund them in stages so that money follows results, and launch a small first cohort. Then make reviewing the pipeline a fixed part of how senior leadership runs, so that the discipline outlasts the first quarter. For the full plan, see <a href='https://www.fastcompany.com/91523850/ai-companys-transformation-90-days' target='_blank' rel='noopener noreferrer'>Faisal Hoque’s 90-day plan in <i>Fast Company</i></a>."
+      },
+      "items": [
+        {
+          "position": 1,
+          "label": "Problem-first",
+          "question": "How consistently do your AI initiatives start from a specific business problem that stands between the organization and its purpose or strategic goals, rather than from the technology?",
+          "anchor_low_label": "Rarely",
+          "anchor_low_text": "Ideas arrive because a tool is available or a vendor is offering it.",
+          "anchor_high_label": "Always",
+          "anchor_high_text": "No initiative starts without a named problem it is meant to remove and a strategic goal that problem is blocking."
+        },
+        {
+          "position": 2,
+          "label": "Visibility",
+          "question": "How complete is your picture of the AI activity already underway across the enterprise and what it costs?",
+          "anchor_low_label": "No picture",
+          "anchor_low_text": "No one could list every pilot, experiment, and AI subscription currently running, or what they cost.",
+          "anchor_high_label": "Complete inventory",
+          "anchor_high_text": "A current inventory covers every initiative, official and unofficial, with its status and spend."
+        },
+        {
+          "position": 3,
+          "label": "Decision rights",
+          "question": "How clear is it who has the authority to approve, advance, or stop an AI initiative?",
+          "anchor_low_label": "Unclear",
+          "anchor_low_text": "Unclear for at least one of these. Most often, nobody can say who stops a project.",
+          "anchor_high_label": "Clear and named",
+          "anchor_high_text": "Each decision has a named holder with real authority, under one owner accountable for the pipeline as a whole."
+        },
+        {
+          "position": 4,
+          "label": "Incentives",
+          "question": "To what extent are leaders measured and rewarded on the health of the innovation pipeline, not only on quarterly delivery and cost?",
+          "anchor_low_label": "Not at all",
+          "anchor_low_text": "A failed experiment counts against you.",
+          "anchor_high_label": "Substantially",
+          "anchor_high_text": "Pipeline measures form part of every leader’s evaluation, and a well-run failure is treated as useful."
+        },
+        {
+          "position": 5,
+          "label": "Stage-gated funding",
+          "question": "To what extent is funding for AI initiatives released in stages, with each stage having to show evidence before the next is funded?",
+          "anchor_low_label": "Fixed at approval",
+          "anchor_low_text": "Funding is committed at approval and rarely revisited. Initiatives fade out rather than being stopped.",
+          "anchor_high_label": "Staged",
+          "anchor_high_text": "Every initiative is funded stage by stage, and stopping one at a checkpoint is a routine outcome."
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "code": "GOV",
+      "name": "AI Governance",
+      "description": "Whether your AI principles are concrete enough that a breach could be recognized, whether a named owner has the authority to halt a deployment, whether systems are reviewed before they go live, whether failure is anticipated rather than discovered, and whether the effects on people are weighed before a deployment proceeds.",
+      "pressing_question": "Who can stop this going live, and what would make them?",
+      "summary_line": "Whether someone can enforce your AI principles and halt a deployment.",
+      "failure_line": "You have principles. None of them would prohibit anything you are currently doing.",
+      "guide": {
+        "what": "An organization that governs its AI well knows which systems it is running and has decided what each of them is allowed to do. Its principles are clear enough to settle a case the rules never anticipated, so hard decisions do not wait for new policy. Someone with real authority can approve a deployment or stop it, and someone is watching what the systems actually do. Before anything goes live, the question of what it will do to the people it affects has been asked and answered. None of this runs as a separate project. It is part of ordinary operations and covers the AI that arrives inside purchased software as much as the systems the organization builds itself.",
+        "why": "Every AI system deployed without an adequate governance framework creates reputational, legal, and operational risk now, and those risks compound over time. The dangers are not only technical. A survey of 750 chief financial officers projects roughly 500,000 AI-related job losses in 2026 alone, so responsible AI has to account for the societal impact of these systems as well as the operational risk. In most organizations the AI footprint is larger, more fragmented, and less governed than leadership believes, because employees adopt unsanctioned tools and vendors add AI features to existing software. Governance policies without the technical infrastructure to see what systems are doing are just words, and where decision rights are ambiguous, decisions default to whoever speaks loudest or moves fastest, and responsible AI loses every time.",
+        "how": "The work begins with an honest inventory, because most organizations are running more AI than their leaders know. For each system, ask what the worst outcome would be and who would answer for it, and pause anything making consequential decisions with no owner in sight. Then write down what the organization stands for in terms concrete enough to guide a decision the policy never foresaw, and give governance to someone whose job it is rather than a duty bolted onto another role. Decide which systems warrant which depth of review, build the monitoring that shows what they are actually doing, make review before launch the rule, and write each system’s shutdown plan before it is needed. For the full plan, see <a href='https://www.fastcompany.com/91527542/heres-how-jump-start-your-companys-responsible-ai-governance-90-days' target='_blank' rel='noopener noreferrer'>Faisal Hoque’s 90-day plan in <i>Fast Company</i></a>."
+      },
+      "items": [
+        {
+          "position": 1,
+          "label": "Principles",
+          "question": "How concretely are your organization’s AI principles defined?",
+          "anchor_low_label": "None in writing",
+          "anchor_low_text": "There are none in writing, or they are general statements of value that rule nothing out.",
+          "anchor_high_label": "Concrete and testable",
+          "anchor_high_text": "Each principle states what a breach would look like, so a violation can be recognized and acted on."
+        },
+        {
+          "position": 2,
+          "label": "Ownership",
+          "question": "To what extent does AI governance have a dedicated owner with the authority to enforce policy, including halting a deployment?",
+          "anchor_low_label": "Side responsibility",
+          "anchor_low_text": "At most a side responsibility in someone’s existing role, with no power to stop anything.",
+          "anchor_high_label": "Named owner",
+          "anchor_high_text": "A named person or body owns it as a core part of their job, with an enterprise-wide view and the authority to halt a deployment."
+        },
+        {
+          "position": 3,
+          "label": "Review before go-live",
+          "question": "How consistently does an AI system go through a governance review before it goes live?",
+          "anchor_low_label": "Never",
+          "anchor_low_text": "Systems are adopted and switched on without review, including AI features that vendors add to existing software.",
+          "anchor_high_label": "Always",
+          "anchor_high_text": "Nothing above a defined risk threshold goes live without a documented review."
+        },
+        {
+          "position": 4,
+          "label": "Anticipating failure",
+          "question": "How systematically does your organization look for what could go wrong with its AI systems, before and after they go live?",
+          "anchor_low_label": "Discovered late",
+          "anchor_low_text": "Problems come to light only when they become incidents.",
+          "anchor_high_label": "Anticipated",
+          "anchor_high_text": "Every system’s failure modes are named and recorded in advance, and its behavior is monitored against them on a schedule."
+        },
+        {
+          "position": 5,
+          "label": "Human impact",
+          "question": "How deliberately are the effects of an AI deployment on the people it touches (employees, customers, communities) weighed before it proceeds?",
+          "anchor_low_label": "Not weighed",
+          "anchor_low_text": "Deployments are judged on cost and speed.",
+          "anchor_high_label": "Always assessed",
+          "anchor_high_text": "Every deployment is assessed for its effect on the people involved, and that assessment can change or stop it."
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "code": "EXE",
+      "name": "Executive Readiness",
+      "description": "Whether your senior leaders judge AI from their own daily use rather than from briefings, whether the organizational change AI demands has a named leader, whether the decisions reserved for people are written down, whether the role of middle managers has been decided, and whether the board can challenge management on substance.",
+      "pressing_question": "Which decisions have we decided a machine may not make, and where is that written?",
+      "summary_line": "Whether senior leaders know AI well enough to lead the change themselves.",
+      "failure_line": "Your leadership team can describe the strategy. None of them has used the tools.",
+      "guide": {
+        "what": "Executive readiness comes down to whether the senior team can lead an AI transformation itself rather than sponsor one and delegate the substance. A leader who is ready understands how AI systems work well enough to judge a proposal without leaning on the vendor or the technology function. Such leaders are comfortable deciding before the picture is complete, and they will stop their own initiatives when the evidence turns against them. They know which decisions can be handed to a system and which must stay with a person. The CEO sets the pace and the board sets the ceiling, so the board has to know enough to challenge management on substance.",
+        "why": "In March 2026 Coca-Cola’s James Quincey said that AI had significantly influenced his decision to step down, because the company needed someone with the energy to pursue a completely new transformation of the enterprise. Walmart’s Doug McMillon had stepped aside a few months earlier for the same reason. These were not failed CEOs. Both had led a decade of growth, and both concluded independently that the AI era demanded a kind of leadership they could not provide. They framed the challenge as personal, and an organization cannot think that way. It cannot step aside and replace itself. It has to develop the leadership it needs, systematically and at scale, or it will fail with the leadership it has. A leadership team moving faster than its board will eventually slow to the board’s pace, so the board’s fluency matters too.",
+        "how": "Nothing useful happens until the team knows where it stands, so the plan starts with assessment: what each leader understands about AI, how they behave when the answer is uncertain, and how they made their recent big decisions, with the CEO held to the highest standard. Capability is then built through use. Leaders work with the tools every day, rehearse the decisions they have been avoiding, learn alongside peers, and spend time with the researchers and companies furthest ahead rather than with vendors. The changes hold only if evaluation and promotion reward the new behavior, so those change too, the board is brought along, and the hard calls about who can make the shift are taken on evidence. For the full plan, see <a href='https://www.fastcompany.com/91534223/ai-ready-leadership-team-90-day-plan' target='_blank' rel='noopener noreferrer'>Faisal Hoque’s 90-day plan in <i>Fast Company</i></a>."
+      },
+      "items": [
+        {
+          "position": 1,
+          "label": "Fluency from use",
+          "question": "How directly does your senior leadership team work with AI tools in its own daily work?",
+          "anchor_low_label": "Secondhand",
+          "anchor_low_text": "AI is delegated, and leaders’ understanding of it is secondhand, from vendors and briefings.",
+          "anchor_high_label": "Daily use",
+          "anchor_high_text": "Every senior leader, the CEO included, uses AI tools daily on work that matters and can judge them from experience."
+        },
+        {
+          "position": 2,
+          "label": "Ownership of the change",
+          "question": "To what extent does the organizational and cultural change that AI demands have a named leader, as distinct from whoever runs the technology?",
+          "anchor_low_label": "No owner",
+          "anchor_low_text": "AI is run as a technology program, and the change it requires belongs to no one.",
+          "anchor_high_label": "Named leader",
+          "anchor_high_text": "A named senior leader owns the transformation across the whole organization, with the authority to carry it through."
+        },
+        {
+          "position": 3,
+          "label": "The human boundary",
+          "question": "How explicitly has your leadership team decided which decisions AI may make on its own, which it may inform, and which stay exclusively human?",
+          "anchor_low_label": "Case by case",
+          "anchor_low_text": "The boundary is set case by case, usually by whoever deploys the tool.",
+          "anchor_high_label": "Written down",
+          "anchor_high_text": "It is decided and written down with the reasons, so it holds when a vendor or a budget cycle pushes against it."
+        },
+        {
+          "position": 4,
+          "label": "Middle management",
+          "question": "How clearly has your organization decided what role its middle managers will play as AI enters their teams’ work?",
+          "anchor_low_label": "Undecided",
+          "anchor_low_text": "Managers are treated mainly as a cost that automation may remove.",
+          "anchor_high_label": "Decided",
+          "anchor_high_text": "What AI does, what managers keep, and why, with the managers involved in the design."
+        },
+        {
+          "position": 5,
+          "label": "Board oversight",
+          "question": "How substantively can your board oversee AI strategy and risk?",
+          "anchor_low_label": "Barely",
+          "anchor_low_text": "AI reaches the board occasionally, with no shared vocabulary and no director who knows the field.",
+          "anchor_high_label": "Fully",
+          "anchor_high_text": "AI is a recurring board agenda item, at least one director has deep AI expertise, and the board can challenge management on substance."
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "code": "ARC",
+      "name": "AI-Ready Architecture",
+      "description": "Whether every layer of the AI stack is mapped, whether critical data has named owners and known quality, whether the machine identities that can reach your systems are governed as human accounts are, whether each AI system sits within a mapped business process, and whether the organization could leave a provider if it chose to.",
+      "pressing_question": "What would it take to leave this provider, and who has costed it?",
+      "summary_line": "Whether the tech stack your AI runs on can carry it safely at scale.",
+      "failure_line": "You govern every human account. Nobody can list the machine ones.",
+      "guide": {
+        "what": "The architecture question is whether the tech stack underneath the organization’s AI can carry it safely as it grows. Answering it starts with knowing what the stack actually is, and few organizations have a current picture of it. Each AI system then has to fit the business it serves, placed within a process the organization has actually mapped. And the dependencies the stack rests on should have been chosen deliberately, so that the organization keeps its sovereignty and could still leave a provider or switch a model if it had to. Where the stack falls short on any of these, it sets a ceiling on the AI strategy that no ambition above it can lift.",
+        "why": "Consider how a breach now happens. An employee signs up for an AI productivity tool with a corporate account and grants it broad access. Months later the tool’s own systems are compromised, and the attackers use that trust relationship as a bridge into the company’s environment. No software vulnerability has been exploited. The technology worked as designed, and the architecture was not fit for a world in which AI tools and agents hold access to company systems. Organizations across industries are deploying AI tools, workflows, and autonomous agents on architectures designed for a different era. Whether those deployments work, and whether they scale, depends on the systems they are embedded in, and there is no point building AI on infrastructure that is fundamentally incompatible with it.",
+        "how": "Begin by finding out what technology the organization actually has: where the data lives and who owns it, how systems connect, which people and machines can reach what, and how the infrastructure would behave under AI’s demands. Then ask, part by part, what happens when an autonomous system runs on top of it. Repair the foundations before launching anything new, giving critical data real owners and standards, bringing integrations and model choices under governance, and issuing every AI agent an identity of its own. Then run one real use case through the new architecture end to end, test it as an attacker would, and make architecture review a condition of every AI initiative. For the full plan, see <a href='https://www.fastcompany.com/91534353/ai-enterprise-architecture-strategy-90-day-plan' target='_blank' rel='noopener noreferrer'>Faisal Hoque’s 90-day plan in <i>Fast Company</i></a>."
+      },
+      "items": [
+        {
+          "position": 1,
+          "label": "Stack mapped",
+          "question": "How completely is your AI technology stack mapped, layer by layer: data systems, compute, models, integrations, and the applications where AI lives?",
+          "anchor_low_label": "Unmapped",
+          "anchor_low_text": "The picture is an architecture diagram from years ago, and the tools teams adopt on their own are not on it.",
+          "anchor_high_label": "Fully mapped",
+          "anchor_high_text": "Every layer is cataloged in one current map, including unapproved tools, with an owner for each component."
+        },
+        {
+          "position": 2,
+          "label": "Data readiness",
+          "question": "How ready is your data for AI: owned, governed, and of known quality?",
+          "anchor_low_label": "Fragmented",
+          "anchor_low_text": "Critical data sits in repositories nobody owns, with quality nobody has measured.",
+          "anchor_high_label": "Owned and governed",
+          "anchor_high_text": "Every critical data domain has a named owner and written standards, and each system has been checked against them."
+        },
+        {
+          "position": 3,
+          "label": "Non-human identities",
+          "question": "How well governed are the non-human identities that can reach your systems: service accounts, API keys, automations, and AI agents?",
+          "anchor_low_label": "Unknown",
+          "anchor_low_text": "Nobody can list them or say what each is permitted to do.",
+          "anchor_high_label": "Governed",
+          "anchor_high_text": "Every one has an owner, scoped privileges, a defined life cycle, and monitored behavior, as every human account does."
+        },
+        {
+          "position": 4,
+          "label": "Enterprise architecture fit",
+          "question": "How well is each AI system placed within the business process it serves: what it does there, whom it asks, who decides, and who is accountable?",
+          "anchor_low_label": "Unplaced",
+          "anchor_low_text": "AI has been added to processes nobody has mapped, and the technology and the business steps are not connected.",
+          "anchor_high_label": "Mapped",
+          "anchor_high_text": "Every AI workflow is mapped as a business process, with the person who decides and the person accountable named at each step."
+        },
+        {
+          "position": 5,
+          "label": "Sovereignty",
+          "question": "How deliberately has your organization kept its freedom to change course on AI: to leave a provider, switch a model, or overrule what a tool assumes?",
+          "anchor_low_label": "Not at all",
+          "anchor_low_text": "Dependencies were drifted into, and nobody could say what leaving one would take.",
+          "anchor_high_label": "Fully",
+          "anchor_high_text": "Every key dependency was consciously chosen, its exit is known, and a body with authority reviews the position."
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "code": "CUL",
+      "name": "AI-Ready Culture",
+      "description": "Whether the culture leadership describes is the one employees live in, whether people can raise a concern or admit a mistake safely, whether the organization has been honest about what AI means for jobs, whether an employee can try a tool on real work without a fight, and whether the people whose opinions shape everyone else’s have been engaged.",
+      "pressing_question": "Who told us something about AI we did not want to hear, and what happened to them?",
+      "summary_line": "Whether the culture employees actually live will support or resist the implementation of AI.",
+      "failure_line": "Everyone is enthusiastic in the room. The shadow usage says otherwise.",
+      "guide": {
+        "what": "An AI-ready culture is one in which people are willing to change how they work, and are able to say so when the change is going wrong. Willingness of that kind cannot be mandated. It grows where raising a concern or admitting a mistake costs nothing, so that problems surface while they are still small. Honesty about what AI will mean for people’s jobs matters just as much, because vague reassurance convinces no one. The colleagues whose opinions carry weight with everyone else have to be brought in early, since they will either carry the change or block it. A culture like this is built from what the organization rewards and what it makes safe, far more than from what it says about itself.",
+        "why": "KPMG’s 2025 American Worker Survey found that 52% of workers worry that AI will take their jobs, and a report by the AI firm Writer found that almost a third of employees say they have sabotaged their company’s AI efforts. There are few parallels for this level of resistance to a workplace technology. In 2023 Eric Vaughan, CEO of IgniteTech, decided that AI was an existential threat, put 20% of payroll into AI training, and mandated a full day a week on AI projects. The result was resistance rather than adoption. People refused the tools, skipped training, and sabotaged the effort, and within a year the company had replaced nearly 80% of its staff. The company has prospered since, but the cost of failing to change the culture was the loss of most of the workforce, along with its institutional knowledge and relationships.",
+        "how": "Diagnosis comes first, of the culture as it is lived rather than as it is stated. Find where the values on the wall and the behavior on the ground diverge, which teams lack the safety to speak up, and what people fear about AI. Then work on the mechanisms rather than the messaging. Reward experiments and honest failures, make it cheap and safe to try a tool on real work, run meetings so that dissent is heard, and protect the people who say what leadership would rather not hear. Tell the workforce plainly what is changing, celebrate the teams that model the new behavior, and confront the senior people who contradict it. For the full plan, see <a href='https://www.fastcompany.com/91537924/ai-work-culture-strategy-90-day-plan' target='_blank' rel='noopener noreferrer'>Faisal Hoque’s 90-day plan in <i>Fast Company</i></a>."
+      },
+      "items": [
+        {
+          "position": 1,
+          "label": "Stated versus lived culture",
+          "question": "How closely does what actually happens in your organization — in meetings, in decisions, and in who gets rewarded — match the culture leadership describes?",
+          "anchor_low_label": "Barely",
+          "anchor_low_text": "The values on the wall and the behavior on the ground are two different cultures.",
+          "anchor_high_label": "Closely",
+          "anchor_high_text": "The stated values would let a newcomer predict how decisions get made and what gets rewarded."
+        },
+        {
+          "position": 2,
+          "label": "Safety to raise hard truths",
+          "question": "How safe is it for someone in your organization to raise a concern about AI, admit a mistake, or challenge a decision?",
+          "anchor_low_label": "Not safe",
+          "anchor_low_text": "Hard truths go unspoken, and the people who raise them are sidelined.",
+          "anchor_high_label": "Safe at every level",
+          "anchor_high_text": "Hard truths are heard and acted on, and the people who raise them are protected."
+        },
+        {
+          "position": 3,
+          "label": "Honesty about the workforce transition",
+          "question": "How honestly has your organization told employees what AI means for their jobs?",
+          "anchor_low_label": "Not addressed",
+          "anchor_low_text": "Fears go unvoiced, and communication offers vague reassurance about augmentation.",
+          "anchor_high_label": "Fully",
+          "anchor_high_text": "Fears have been asked about directly, and employees know which roles are changing, how, and what support exists."
+        },
+        {
+          "position": 4,
+          "label": "Ease of experimentation",
+          "question": "How easily can an employee try an AI tool on a real piece of their own work?",
+          "anchor_low_label": "With difficulty",
+          "anchor_low_text": "It takes a business case and several approvals, so people either don’t bother or do it in secret.",
+          "anchor_high_label": "Easily",
+          "anchor_high_text": "A sandbox, a quick approval path for low-risk trials, and a small pool of funding make trying things routine."
+        },
+        {
+          "position": 5,
+          "label": "Informal influencers",
+          "question": "How deliberately has your organization engaged the people whose opinions shape how colleagues read leadership’s moves on AI?",
+          "anchor_low_label": "Not at all",
+          "anchor_low_text": "Nobody has mapped them, and they interpret the strategy for their colleagues unprompted.",
+          "anchor_high_label": "Deliberately",
+          "anchor_high_text": "They are identified team by team and engaged early, with a specific plan for each."
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "code": "WRK",
+      "name": "AI-Ready Workforce",
+      "description": "Whether the organization knows which skills its AI initiatives will need before it commits to them, whether most of the workforce can use AI tools and judge their output, whether reskilling leads to a real role, whether time for learning survives delivery pressure, and whether capability stays behind when an outside partner leaves.",
+      "pressing_question": "When the partner leaves, what capability do we still have?",
+      "summary_line": "Whether the organization is building the skills its AI strategy depends on.",
+      "failure_line": "You bought the capability. You did not keep it.",
+      "guide": {
+        "what": "Workforce readiness means having the people needed to run the AI strategy the organization has committed to, and a way of keeping their skills current. While technical depth is an important part of that readiness, it matters more to know where AI actually creates value inside each business function, because that is where the work gets done. Most important of all is ordinary fluency across the whole workforce, so that people can use the tools well and notice when they are wrong. None of this lasts unless the organization keeps investing in it. That means protecting time to learn even when deadlines press, and it means reskilling that ends in a real role rather than a certificate. Above all it means managers who are held to account for developing their teams.",
+        "why": "In a recent survey of senior leaders at large professional services firms, 61% said they had abandoned at least one AI project in the past year because their people lacked the skills to deliver it, and Deloitte’s 2026 survey of more than 3,200 business and technology leaders found insufficient worker skills to be the single biggest barrier to integrating AI into the business. There is no quick fix. Hiring or contracting the skills is expensive and creates dependencies, and capability cannot be built in-house overnight. Organizations routinely approve ambitious AI portfolios and discover months later that they have no one to staff them. Reskilling fails when it becomes training with no path to a new job, learning loses whenever it collides with operational demand, and a partner who performs the work without transferring the capability is a dependency waiting to be discovered.",
+        "how": "Start with the work the organization has already decided to do. Take the AI initiatives that are planned or under way, work out which skills each will need, and measure the workforce against that, concentrating on the few gaps that will stall the work soonest. Hire from outside only for what cannot be built in time. For everyone else, run reskilling that ends in a real role and fluency training judged by changed behavior, and structure outside partners so that their capability transfers in rather than leaving with them. Redesign a few of the roles AI will change most with the people who do them, make managers accountable for developing their teams, and protect learning time when it collides with delivery. For the full plan, see <a href='https://www.fastcompany.com/91541710/your-ai-strategy-is-only-as-strong-as-the-people-who-run-it' target='_blank' rel='noopener noreferrer'>Faisal Hoque’s 90-day plan in <i>Fast Company</i></a>."
+      },
+      "items": [
+        {
+          "position": 1,
+          "label": "Capability demand",
+          "question": "How clearly has your organization worked out which people and skills its AI initiatives will need before it commits to them?",
+          "anchor_low_label": "Not at all",
+          "anchor_low_text": "Initiatives are approved, and the staffing problem is discovered months later.",
+          "anchor_high_label": "Fully",
+          "anchor_high_text": "Every initiative in the pipeline is broken down into the capabilities it needs, and gaps are known before approval."
+        },
+        {
+          "position": 2,
+          "label": "Workforce fluency",
+          "question": "How much of your general workforce can use AI tools productively and tell when an output is unreliable?",
+          "anchor_low_label": "A few specialists",
+          "anchor_low_text": "A small group of specialists. Everyone else depends on them or avoids the tools.",
+          "anchor_high_label": "Nearly everyone",
+          "anchor_high_text": "Nearly everyone, and it shows in how they work rather than in training attendance records."
+        },
+        {
+          "position": 3,
+          "label": "Reskilling with a destination",
+          "question": "To what extent does reskilling in your organization lead to a real role on the other side?",
+          "anchor_low_label": "No destination",
+          "anchor_low_text": "Training produces completion certificates with no path to a different job.",
+          "anchor_high_label": "Defined roles",
+          "anchor_high_text": "Every reskilling pathway connects to a defined destination role, and people are moving into those roles."
+        },
+        {
+          "position": 4,
+          "label": "Learning infrastructure",
+          "question": "How consistently is time for learning protected when it collides with delivery pressure?",
+          "anchor_low_label": "Never",
+          "anchor_low_text": "Learning loses every time, and nobody is held to account for it.",
+          "anchor_high_label": "Consistently",
+          "anchor_high_text": "The expectation is defined and visible, and managers are measured on whether their teams meet it."
+        },
+        {
+          "position": 5,
+          "label": "Partner dependency",
+          "question": "When outside partners do AI work for you, how much of the capability stays behind when they leave?",
+          "anchor_low_label": "None",
+          "anchor_low_text": "The partner does the work, and you need them again to do it next time.",
+          "anchor_high_label": "All of it",
+          "anchor_high_text": "Every engagement has explicit capability-transfer deliverables and a plan for what stays behind."
+        }
+      ]
+    }
+  ],
+  "reference": {
+    "sectors": [
+      "Financial Services",
+      "Healthcare & Life Sciences",
+      "Technology",
+      "Government & Public Sector",
+      "Manufacturing & Industrial",
+      "Retail & Consumer",
+      "Energy & Utilities",
+      "Education",
+      "Professional Services",
+      "Other"
+    ],
+    "organisation_sizes": [
+      "1–50",
+      "51–250",
+      "251–1,000",
+      "1,001–5,000",
+      "5,001–20,000",
+      "20,000+"
+    ],
+    "roles": [
+      "Chief Executive Officer",
+      "Chief Information Officer",
+      "Chief Technology Officer",
+      "Chief Data / AI Officer",
+      "Chief Operating Officer",
+      "Chief Financial Officer",
+      "Chief Risk / Compliance Officer",
+      "Chief Human Resources Officer",
+      "Chief Information Security Officer",
+      "Head of Transformation",
+      "Head of Data Science / AI",
+      "Business Unit Leader",
+      "Enterprise Architect",
+      "Board Director",
+      "Other"
+    ],
+    "tenures": [
+      "Under 1 year",
+      "1–3 years",
+      "4–6 years",
+      "7–10 years",
+      "Over 10 years"
+    ],
+    "guide_tabs": [
+      {
+        "key": "what",
+        "label": "What it is"
+      },
+      {
+        "key": "why",
+        "label": "Why it matters"
+      },
+      {
+        "key": "how",
+        "label": "How to build it"
+      }
+    ],
+    "correlation_metrics": [
+      {
+        "key": "agenda",
+        "label": "Executive meetings with AI as a decision item"
+      },
+      {
+        "key": "edu",
+        "label": "Hours of AI education taken"
+      },
+      {
+        "key": "systems",
+        "label": "AI systems on the inventory"
+      }
+    ]
+  },
+  "thresholds": {
+    "correlation_min_n": 30
+  },
+  "identity": {
+    "email_pattern": "^[^\\s@,;:<>()[\\]\\\\\"]+@[A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?(\\.[A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?)*\\.[A-Za-z]{2,24}$",
+    "blocked_email_domains": [
+      "example.com",
+      "example.org",
+      "example.net",
+      "test.com",
+      "email.com",
+      "mailinator.com",
+      "yopmail.com",
+      "guerrillamail.com",
+      "10minutemail.com",
+      "tempmail.com",
+      "temp-mail.org",
+      "trashmail.com",
+      "sharklasers.com",
+      "throwawaymail.com",
+      "getnada.com",
+      "maildrop.cc",
+      "dispostable.com",
+      "fakeinbox.com"
+    ]
+  },
+  "synthetic": {
+    "archetypes": {
+      "institutionalized": {
+        "weight": 0.1,
+        "targets": [
+          4.3,
+          4.2,
+          4.1,
+          4,
+          4.1,
+          3.9
+        ],
+        "emerging": false,
+        "note": "Deliberate everywhere. Workforce capability is the last thing catching up."
+      },
+      "scaling": {
+        "weight": 0.2,
+        "targets": [
+          3.6,
+          3.3,
+          3.5,
+          3.4,
+          3.4,
+          3
+        ],
+        "emerging": false,
+        "note": "Past the pilot stage and building the scaffolding while it runs."
+      },
+      "piloting": {
+        "weight": 0.26,
+        "targets": [
+          2.9,
+          2.4,
+          2.7,
+          2.5,
+          2.8,
+          2.2
+        ],
+        "emerging": true,
+        "note": "Plenty of activity, little of it governed or counted. Marks cluster at Emerging."
+      },
+      "governanceLed": {
+        "weight": 0.14,
+        "targets": [
+          2.6,
+          4,
+          3.1,
+          2.9,
+          3,
+          2.5
+        ],
+        "emerging": false,
+        "note": "Regulated. Policy is mature, and the pipeline behind it is thin."
+      },
+      "techLed": {
+        "weight": 0.16,
+        "targets": [
+          3.2,
+          2.3,
+          2.6,
+          4,
+          2.5,
+          2.8
+        ],
+        "emerging": false,
+        "note": "Architecture is strong, governance and culture are an afterthought."
+      },
+      "starting": {
+        "weight": 0.14,
+        "targets": [
+          1.8,
+          1.6,
+          2,
+          1.9,
+          2.1,
+          1.7
+        ],
+        "emerging": false,
+        "note": "Early and honest about it. Everything is ahead of them."
+      }
+    },
+    "sector_prior": {
+      "Financial Services": [
+        0.1,
+        0.5,
+        0.2,
+        0.3,
+        -0.1,
+        0.1
+      ],
+      "Healthcare & Life Sciences": [
+        -0.1,
+        0.4,
+        0,
+        0.1,
+        0,
+        0
+      ],
+      "Technology": [
+        0.4,
+        -0.2,
+        0.3,
+        0.6,
+        0.2,
+        0.4
+      ],
+      "Government & Public Sector": [
+        -0.3,
+        0.3,
+        -0.1,
+        -0.3,
+        0,
+        -0.2
+      ],
+      "Manufacturing & Industrial": [
+        -0.1,
+        -0.1,
+        -0.1,
+        0,
+        -0.2,
+        0
+      ],
+      "Retail & Consumer": [
+        0.2,
+        -0.2,
+        0.1,
+        0.1,
+        0.1,
+        0
+      ],
+      "Energy & Utilities": [
+        -0.2,
+        0.2,
+        -0.1,
+        0,
+        -0.1,
+        -0.1
+      ],
+      "Education": [
+        -0.3,
+        0.1,
+        -0.2,
+        -0.3,
+        0.2,
+        0.1
+      ],
+      "Professional Services": [
+        0.1,
+        0,
+        0.2,
+        -0.1,
+        0.2,
+        0.3
+      ],
+      "Other": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "role_bias": {
+      "Chief Executive Officer": [
+        0.3,
+        0.1,
+        0.4,
+        -0.1,
+        0.2,
+        0
+      ],
+      "Chief Information Officer": [
+        0.1,
+        0.1,
+        -0.1,
+        0.5,
+        -0.2,
+        0
+      ],
+      "Chief Technology Officer": [
+        0.3,
+        -0.1,
+        0,
+        0.5,
+        -0.2,
+        0.1
+      ],
+      "Chief Data / AI Officer": [
+        0.4,
+        0.2,
+        0.1,
+        0.4,
+        -0.1,
+        0.2
+      ],
+      "Chief Operating Officer": [
+        0.1,
+        0,
+        0.1,
+        -0.1,
+        0.1,
+        0.1
+      ],
+      "Chief Risk / Compliance Officer": [
+        -0.2,
+        0.5,
+        0,
+        0,
+        -0.1,
+        -0.1
+      ],
+      "Chief Human Resources Officer": [
+        -0.2,
+        0.1,
+        0.1,
+        -0.3,
+        0.5,
+        0.5
+      ],
+      "Chief Information Security Officer": [
+        -0.1,
+        0.3,
+        -0.1,
+        0.4,
+        -0.2,
+        -0.1
+      ],
+      "Head of Transformation": [
+        0.2,
+        0,
+        0.3,
+        -0.1,
+        0.4,
+        0.3
+      ],
+      "Business Unit Leader": [
+        0,
+        -0.2,
+        0,
+        -0.2,
+        0.1,
+        0
+      ]
+    },
+    "org_prefix": [
+      "Meridian",
+      "Northgate",
+      "Apex",
+      "ClearPath",
+      "Halcyon",
+      "Brightwater",
+      "Summit",
+      "Ardent",
+      "Kestrel",
+      "Lumen",
+      "Redwood",
+      "Harbor",
+      "Vantage",
+      "Pinecrest",
+      "Silverline",
+      "Cobalt",
+      "Atlas",
+      "Beacon",
+      "Foxglove",
+      "Granite",
+      "Orchard",
+      "Tidewater",
+      "Ironbridge",
+      "Larkspur",
+      "Windward"
+    ],
+    "org_suffix": {
+      "Financial Services": [
+        "Capital Group",
+        "Bancorp",
+        "Insurance",
+        "Asset Management",
+        "Credit Union"
+      ],
+      "Healthcare & Life Sciences": [
+        "Health System",
+        "Medical Group",
+        "Therapeutics",
+        "Diagnostics",
+        "Care Network"
+      ],
+      "Technology": [
+        "Software",
+        "Systems",
+        "Labs",
+        "Cloud",
+        "Robotics"
+      ],
+      "Government & Public Sector": [
+        "Transit Authority",
+        "County Services",
+        "Housing Agency",
+        "Revenue Office",
+        "Port Authority"
+      ],
+      "Manufacturing & Industrial": [
+        "Manufacturing",
+        "Industries",
+        "Components",
+        "Automation",
+        "Foundry"
+      ],
+      "Retail & Consumer": [
+        "Retail Co.",
+        "Brands",
+        "Marketplace",
+        "Grocers",
+        "Home"
+      ],
+      "Energy & Utilities": [
+        "Energy",
+        "Power",
+        "Water",
+        "Grid Services",
+        "Renewables"
+      ],
+      "Education": [
+        "Learning Trust",
+        "University",
+        "Academy",
+        "School District",
+        "College"
+      ],
+      "Professional Services": [
+        "Advisory Partners",
+        "Consulting",
+        "Legal",
+        "Accounting",
+        "Search"
+      ],
+      "Other": [
+        "Holdings",
+        "Group",
+        "Partners",
+        "Collective",
+        "Trust"
+      ]
+    },
+    "first_names": [
+      "Dana",
+      "Rahul",
+      "Priya",
+      "Tom",
+      "Aisha",
+      "Marcus",
+      "Elena",
+      "Kenji",
+      "Sofia",
+      "Omar",
+      "Ingrid",
+      "Wei"
+    ],
+    "last_names": [
+      "Whitfield",
+      "Menon",
+      "Natarajan",
+      "Reyes",
+      "Bello",
+      "Okafor",
+      "Lindqvist",
+      "Tanaka",
+      "Marchetti",
+      "Haddad",
+      "Sorensen",
+      "Zhang"
+    ]
+  }
+}

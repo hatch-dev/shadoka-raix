@@ -1,0 +1,832 @@
+{
+  "slug": "raix-director-scorecard",
+  "version": "1.0",
+  "name": "RAI-X Director Scorecard",
+  "subtitle": "The Director Scorecard",
+  "scale": "4 levels",
+  "scoring_rule": "floor",
+  "rule_text": "director level = band of the weakest scored competency",
+  "source": "reference/RAIX_Director_Scorecard/index.html",
+  "extracted_at": "2026-09-22T04:41:51.841Z",
+  "rungs": [
+    {
+      "value": 1,
+      "name": "Unaware",
+      "description": "Not considered.",
+      "colour_hex": "#D2564E",
+      "colour_var": "var(--r1)"
+    },
+    {
+      "value": 2,
+      "name": "Aware",
+      "description": "Value understood, not acted upon.",
+      "colour_hex": "#8A9BB0",
+      "colour_var": "var(--r2)"
+    },
+    {
+      "value": 3,
+      "name": "Practiced",
+      "description": "Done at least once.",
+      "colour_hex": "#3D82C4",
+      "colour_var": "var(--r3)"
+    },
+    {
+      "value": 4,
+      "name": "Systematic",
+      "description": "Done as a matter of course.",
+      "colour_hex": "#E8933F",
+      "colour_var": "var(--r4)"
+    }
+  ],
+  "bands": [
+    {
+      "rung_value": 1,
+      "min": null,
+      "max": 1.75
+    },
+    {
+      "rung_value": 2,
+      "min": 1.75,
+      "max": 2.75
+    },
+    {
+      "rung_value": 3,
+      "min": 2.75,
+      "max": 3.75
+    },
+    {
+      "rung_value": 4,
+      "min": 3.75,
+      "max": null
+    }
+  ],
+  "competencies": [
+    {
+      "position": 1,
+      "code": "GOV",
+      "name": "Governance Oversight",
+      "description": "Whether the board governs AI the way it governs other material matters, with a named person who has the authority to act, governing documents that directors have read in full, AI matters that come to the board for decisions rather than purely as information, and board actions that are shaped by real understanding of the subject.",
+      "board_question": "Who is accountable for AI here, and when did this board last make a decision about it?",
+      "failure_line": "You can name the committee. You cannot name the person.",
+      "guide": {
+        "what": "Governance Oversight means treating AI as the board treats any other major matter, such as a large contract or a new line of business. A director who has this competency knows who is accountable for each AI matter and what that person can change, has read what the board has agreed about AI rather than a summary of it, and expects to decide on AI matters rather than to be told about them.",
+        "why": "Governance that is real for other risks can be missing for AI without anyone noticing. When accountability sits with a committee, no single person has to answer for it or has the authority to fix it. When AI comes to the board only as information, the board never decides anything about it, so there is nothing that management has been asked to do and nothing the board can later be held to.",
+        "how": "Whenever AI is on the agenda, ask who is accountable and what that person can stop or change. Read the AI policy in full when it comes to you for approval. When an AI matter arrives as an information item, ask for it to come back as a decision. When a decision is warranted, press for the board to make one, and have it minuted.",
+        "example": "A director asks who signs off the register of AI risks. She is told “the AI council” and asks which individual. The answer takes three weeks to arrive. She asks for the delay to be minuted, and for the next AI item to come to the board as a decision rather than an update."
+      },
+      "floor_narrative": "Governance Oversight sets your level at {floor}. This competency is about whether accountability for AI at this company rests with a person who can act or only with a committee that can discuss. When it rests with a committee, a failure has no one to answer for it and no one with the authority to fix it. Before the next meeting, put one question to the chair in writing, asking who is accountable for the company’s most consequential AI system and what that person can stop or change. Ask for the answer to be minuted.",
+      "items": [
+        {
+          "position": 1,
+          "statement": "Whenever an AI matter comes before the board, I ask which individual is accountable for it, rather than which committee."
+        },
+        {
+          "position": 2,
+          "statement": "When an AI system is presented to the board, I ask whether the individual accountable for it has the authority to stop or change it."
+        },
+        {
+          "position": 3,
+          "statement": "When an AI policy or governance charter comes to the board for approval or renewal, I read it in full rather than relying on a summary."
+        },
+        {
+          "position": 4,
+          "statement": "I object when an AI matter arrives as an information item rather than a decision."
+        },
+        {
+          "position": 5,
+          "statement": "When an AI matter warrants it, I attach a board action, such as withholding an approval, moving a budget, or writing a mandate into a charter."
+        }
+      ],
+      "evidence_prompts": [
+        {
+          "position": 1,
+          "template": "Board minutes {q}, item {n}"
+        },
+        {
+          "position": 2,
+          "template": "Written question to the CEO, {q}"
+        },
+        {
+          "position": 3,
+          "template": "Governance committee charter amendment {q}"
+        },
+        {
+          "position": 4,
+          "template": "My dissent recorded, board minutes {q}"
+        },
+        {
+          "position": 5,
+          "template": "Chair’s note to management {q}, ref {n}"
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "code": "DAT",
+      "name": "Data Inquiry",
+      "description": "Whether the board knows what data the company’s AI was built on and takes in, where that data goes, and on what legal basis the company holds it, and whether the board insists on evidence for those answers rather than accepting a vendor’s assurance.",
+      "board_question": "What data goes into our AI, where does it go, and how do we know?",
+      "failure_line": "You accepted “that sits with the vendor” as an answer.",
+      "guide": {
+        "what": "Data Inquiry means treating the data behind an AI system as the board would treat the money behind an investment. A director who has this competency wants to know where the data came from, whether the company is entitled to use it, where it goes, and who can produce the evidence for each answer, and does not support a deployment until those questions have been answered.",
+        "why": "Much of the liability in AI sits in the data, in whether it was collected with consent, where it came from, and whether the company is licensed to use it. These are also the questions most often answered with a vendor’s name in place of a fact.",
+        "how": "Whenever an AI system is presented, ask what it was built on, what it takes in, and on what legal basis the company holds that data. Ask to see the documentation of where the data goes, including whether a vendor keeps it or trains on it. Follow any data claim back past the vendor’s name, and ask the board to wait when a deployment arrives without answers.",
+        "example": "A board is told that the vendor does not train on company data. A director asks to see the clause. The contract permits it for service improvement. She asks for the deployment to wait until the clause is changed."
+      },
+      "floor_narrative": "Data Inquiry sets your level at {floor}. This competency is about knowing what the company’s AI was built on, what it takes in, where that data goes, and on what legal basis the company holds it. Data is where much of the liability in AI sits, and questions about data are the ones most often answered with a vendor’s name in place of a fact. Before the next meeting, pick one AI system in use and ask to see the documentation of what data goes into it and where that data goes, including whether the vendor keeps it or trains on it.",
+      "items": [
+        {
+          "position": 1,
+          "statement": "When an AI system is presented to the board, I ask what data it was built on and what company or customer data it takes in."
+        },
+        {
+          "position": 2,
+          "statement": "When the data behind an AI system is described to the board, I ask on what legal basis the company holds and uses it."
+        },
+        {
+          "position": 3,
+          "statement": "When an AI system is presented to the board, I ask to see the documentation regarding where the data it takes in goes, including whether a vendor keeps it or trains on it."
+        },
+        {
+          "position": 4,
+          "statement": "When a data claim is put to the board, I ask where it comes from, and challenge it if it cannot be traced past a vendor."
+        },
+        {
+          "position": 5,
+          "statement": "When an AI deployment is presented to the board without a clear account of what data it uses and on what legal basis, I ask the board to require that account before the deployment goes any further."
+        }
+      ],
+      "evidence_prompts": [
+        {
+          "position": 1,
+          "template": "Audit committee minutes {q}, item {n}"
+        },
+        {
+          "position": 2,
+          "template": "Written question on legal basis, {q}"
+        },
+        {
+          "position": 3,
+          "template": "Lineage walkthrough with the CDO, {q}"
+        },
+        {
+          "position": 4,
+          "template": "Condition placed on approval, minute {n}"
+        },
+        {
+          "position": 5,
+          "template": "Data paper returned to management {q}"
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "code": "EXP",
+      "name": "Explanation & Disclosure",
+      "description": "Whether the board can explain the company’s AI decisions to the people they are made about, whether those people are told that an AI decided and why, and whether the company’s public claims about AI match what it does.",
+      "board_question": "Could we explain this decision to the person it was made about?",
+      "failure_line": "You have been briefed on the system. You could not describe it to a journalist.",
+      "guide": {
+        "what": "Explanation & Disclosure means holding the company to the same standard of honesty about its AI toward the people its systems decide about and toward the public. A director who has this competency understands how a system that decides about people reaches its decisions, has seen what those people are actually told, and reads the company’s public claims about AI with the same care they would give a claim in the annual report.",
+        "why": "A decision that cannot be explained cannot be defended, to the person it affected, to a regulator, or to a reporter. If no director can say how a system decides, the company’s first explanation under pressure will be improvised by whoever is asked. Public claims that overstate what the company does create the same exposure, because the company is then asked to defend something it has not done.",
+        "how": "When a system that makes decisions about people is presented, ask how it reaches those decisions and whether those people are told that an AI decided. Ask to see the notice they actually receive, and require that it give a reason and not only a result. Check the company’s public claims about AI against what it does, and object when they overstate.",
+        "example": "A director reads the notice sent to declined applicants. It gives a score but no reason. He asks what an applicant is supposed to do with a score and no reason, and asks for the notice to be rewritten before more are sent."
+      },
+      "floor_narrative": "Explanation & Disclosure sets your level at {floor}. This competency is about whether the company can explain an AI decision to the person it was made about, and whether its public claims about AI match what it does. If no one at board level can explain a system, the first explanation given under pressure may be improvised in front of a regulator or a reporter. Before the next meeting, take the system that most affects customers and ask to see the notice sent when it decides against someone. If the notice gives a result and no reason, say so in the room.",
+      "items": [
+        {
+          "position": 1,
+          "statement": "When an AI system that makes decisions about people is presented to the board, I ask how it reaches those decisions."
+        },
+        {
+          "position": 2,
+          "statement": "When the board is briefed on an AI system that makes decisions about people, I ask whether those people are told that an AI made the decision."
+        },
+        {
+          "position": 3,
+          "statement": "When the board is briefed on an AI system that affects people, I ask to see the actual notice or explanation those people receive, rather than a description of it."
+        },
+        {
+          "position": 4,
+          "statement": "When a public claim about the company’s AI comes before me, in a report, a filing, or marketing material, I check it against what the company actually does and object if it overstates."
+        },
+        {
+          "position": 5,
+          "statement": "When management presents an AI system that makes decisions about people, I require that those people be told the reason for the decision and not only the result."
+        }
+      ],
+      "evidence_prompts": [
+        {
+          "position": 1,
+          "template": "Model card reviewed in session {q}"
+        },
+        {
+          "position": 2,
+          "template": "Disclosure redrafted before filing, {q}"
+        },
+        {
+          "position": 3,
+          "template": "Customer notice reviewed, minute {n}"
+        },
+        {
+          "position": 4,
+          "template": "Objection to external claim, minutes {q}"
+        },
+        {
+          "position": 5,
+          "template": "Explainability briefing attended {q}, ref {n}"
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "code": "FAI",
+      "name": "Fairness & Affected Parties",
+      "description": "Whether the board knows which groups the company’s AI could disadvantage, whether that has been tested recently rather than once before launch, and whether problems that testing finds are fixed rather than only recorded.",
+      "board_question": "Who could this system treat worse than others, and when did we last check?",
+      "failure_line": "You were told testing happens. You have not asked when it last ran.",
+      "guide": {
+        "what": "Fairness & Affected Parties means knowing who bears the cost when an AI system gets things wrong, and refusing to take testing on trust. A director who has this competency asks which groups a system could disadvantage, wants the date and findings of the most recent test rather than an assurance that testing happens, reads the unwelcome results as well as the welcome ones, and does not accept a finding being closed until the problem has been fixed.",
+        "why": "Bias testing tends to happen once, before launch, on the version of the model that shipped. Models are retrained and the people they decide about change, so a test that passed at launch says little about the system running now. A finding that is recorded but not fixed leaves the harm in place, and the company can no longer say it did not know.",
+        "how": "When a system that affects people is presented, ask which groups it could disadvantage. When testing is mentioned, ask when the most recent test ran and what it found. Read the results, including anything unwelcome. Ask what a fairness claim rests on, and require a problem to be fixed before the finding is closed.",
+        "example": "A director is told that testing is “part of the release process” and asks for the most recent report. It is nineteen months old. The system has been retrained twice since. She asks for a new test before the next board meeting."
+      },
+      "floor_narrative": "Fairness & Affected Parties sets your level at {floor}. This competency is about knowing which groups the company’s AI could disadvantage and whether that has been tested recently, not only once before launch. Models are retrained and the people they decide about change, so a test that passed at launch says little about the system running today. Before the next meeting, ask for the date and the findings of the most recent bias test on one system that affects people, and ask what was done about anything it found.",
+      "items": [
+        {
+          "position": 1,
+          "statement": "When an AI system that affects people is presented to the board, I ask which groups it could disadvantage."
+        },
+        {
+          "position": 2,
+          "statement": "When the board is told that AI systems are tested for bias, I ask when the last test ran and on which systems."
+        },
+        {
+          "position": 3,
+          "statement": "When bias testing is reported to the board, I read the results themselves, including any unwelcome findings."
+        },
+        {
+          "position": 4,
+          "statement": "When a fairness claim is made about an AI system, I ask what testing it rests on, and challenge it if that testing was a single test before launch."
+        },
+        {
+          "position": 5,
+          "statement": "When bias testing finds a problem in an AI system, I require it to be fixed before the finding is closed."
+        }
+      ],
+      "evidence_prompts": [
+        {
+          "position": 1,
+          "template": "Fairness test report read in full, {q}"
+        },
+        {
+          "position": 2,
+          "template": "Remediation condition minuted {q}, item {n}"
+        },
+        {
+          "position": 3,
+          "template": "Question on last test date, minutes {q}"
+        },
+        {
+          "position": 4,
+          "template": "Affected-group briefing {q}"
+        },
+        {
+          "position": 5,
+          "template": "Finding reopened at my request, ref {n}"
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "code": "RIS",
+      "name": "Risk & Irreversibility",
+      "description": "Whether the board knows what the company’s AI can do that cannot be undone, has seen the full inventory of systems including those inside purchased software, knows how it would hear of an incident, and places conditions on deployments that carry irreversible risk.",
+      "board_question": "What can this system do that we cannot undo, and how would we find out?",
+      "failure_line": "You have seen the deck. You have not seen the inventory.",
+      "guide": {
+        "what": "Risk & Irreversibility means knowing where the company’s AI can cause harm that cannot be reversed, and making sure the board would hear about it in time. A director who has this competency has seen the whole inventory rather than a summary, knows which systems can do things that cannot be undone, knows who is called when one fails, expects systems bought from third parties to get the same scrutiny as systems built in-house, and asks for conditions or a pause when the risk is irreversible.",
+        "why": "A wrong recommendation can be corrected. A payment, a deletion, or a public statement cannot. Boards often see a summary of the AI in use rather than the inventory, and the systems most likely to be missing from the summary are the ones that arrived inside purchased software with no scrutiny at all.",
+        "how": "When a system is presented, ask what it can do that cannot be reversed. At each risk review, ask to see the inventory, including AI inside software the company has bought, and ask who is called first when a system fails and how quickly the board is told. Ask what scrutiny a third-party system has had. Where the risk cannot be reversed, require a condition or a pause.",
+        "example": "A director asks for the inventory. Forty-one systems come back. Nine were unknown to the chief information officer, all of them inside software the company had bought. She asks which of the nine can act without a person, and asks for those to be reviewed first."
+      },
+      "floor_narrative": "Risk & Irreversibility sets your level at {floor}. This competency is about knowing what the company’s AI can do that cannot be undone, and whether anyone can produce a complete list of the systems in use. A wrong recommendation can be corrected. A payment, a deletion, or a public statement cannot. Before the next meeting, ask for the current inventory of AI systems, including AI inside software the company has bought, and ask which entries can act irreversibly. If the inventory has to be assembled before it can be shown, ask for that to be minuted.",
+      "items": [
+        {
+          "position": 1,
+          "statement": "When an AI system is presented to the board, I ask what it can do that cannot be reversed, such as making a payment, deleting a record, or publishing a statement."
+        },
+        {
+          "position": 2,
+          "statement": "When AI risk is reported to the board, I ask who is called first when an AI system fails and how quickly the board is told."
+        },
+        {
+          "position": 3,
+          "statement": "Whenever the board reviews AI risk, I ask to see the inventory of AI systems, including AI inside software the company has bought."
+        },
+        {
+          "position": 4,
+          "statement": "When an AI system built by a third party comes to the board, I ask what scrutiny it has had, and challenge it if that scrutiny is less than an internal build would get."
+        },
+        {
+          "position": 5,
+          "statement": "When an AI deployment carries a risk that cannot be reversed, I require a condition on it, or a pause, before it proceeds."
+        }
+      ],
+      "evidence_prompts": [
+        {
+          "position": 1,
+          "template": "System inventory walkthrough {q}"
+        },
+        {
+          "position": 2,
+          "template": "Deployment paused at board request, minute {n}"
+        },
+        {
+          "position": 3,
+          "template": "Incident escalation drill attended {q}"
+        },
+        {
+          "position": 4,
+          "template": "Third-party review demanded, minutes {q}"
+        },
+        {
+          "position": 5,
+          "template": "Risk condition attached to approval {n}"
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "code": "HUM",
+      "name": "Human Judgment & Workforce",
+      "description": "Whether human control over the company’s AI-assisted decisions is real rather than nominal, whether the board has heard about it from the people who do the work, and whether plans to deploy AI treat the people whose work changes as more than a detail.",
+      "board_question": "Can a person still overrule this system, and does anyone actually do so?",
+      "failure_line": "You know the override exists because a slide said so.",
+      "guide": {
+        "what": "Human Judgment & Workforce means knowing whether the people in the company can still say no to its AI systems, and whether they are treated as part of the plan when AI changes their work. A director who has this competency knows where the override sits and how often it is used, has heard from the people who work alongside these systems without their managers present, challenges deployment plans that treat displacement as a detail, and requires that a person be able to overrule a system in practice, not only on paper.",
+        "why": "An override can exist on a slide and not in practice. A control that nobody has used has not been tested, and the people who would know are usually not the ones presenting to the board. A deployment plan that says nothing about the people whose work it changes has left out the part most likely to go wrong.",
+        "how": "When the board is told that people remain in control, ask at what point a person can overrule the system, what doing so requires, and how often anyone did last quarter. Talk to people below the executive layer about working alongside these systems, without their managers in the room. When a deployment plan comes to the board, ask what happens to the people whose work it changes.",
+        "example": "A board is assured that operators can override the scheduling system. Asked how often they have, management reports zero times in fourteen months. Using the override requires a manager’s approval. A director asks to speak with two operators without their manager present."
+      },
+      "floor_narrative": "Human Judgment & Workforce sets your level at {floor}. This competency is about whether human control over AI-assisted decisions is real, and whether the board has heard about it from the people who do the work rather than only from the people presenting. An override that exists on a slide but is rarely used, or needs a manager’s approval to use, is not the control the slide describes. Before the next meeting, ask how often the override on one system was used last quarter, and arrange to hear from someone who works alongside that system without their manager present.",
+      "items": [
+        {
+          "position": 1,
+          "statement": "When the board is told that people remain in control of an AI-assisted decision, I ask at what point a person can overrule the system and what doing so requires."
+        },
+        {
+          "position": 2,
+          "statement": "When management says that people can override an AI system, I ask how often anyone did so in the last quarter and who."
+        },
+        {
+          "position": 3,
+          "statement": "I talk directly with people below the executive layer about working alongside the company’s AI systems, without their managers in the room."
+        },
+        {
+          "position": 4,
+          "statement": "When a plan to deploy AI comes to the board, I ask what happens to the people whose work it changes, and challenge the plan if that question has been treated as a minor detail."
+        },
+        {
+          "position": 5,
+          "statement": "When an AI system that makes decisions about people is presented to the board, I require that a person be able to overrule it in practice and not only on paper."
+        }
+      ],
+      "evidence_prompts": [
+        {
+          "position": 1,
+          "template": "Site visit below executive level {q}"
+        },
+        {
+          "position": 2,
+          "template": "Override statistics requested, minutes {q}"
+        },
+        {
+          "position": 3,
+          "template": "Workforce plan sent back {q}, item {n}"
+        },
+        {
+          "position": 4,
+          "template": "Board education session commissioned {q}"
+        },
+        {
+          "position": 5,
+          "template": "Skip-level session with operators {q}"
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "code": "AUT",
+      "name": "Autonomy & Agent Authority",
+      "description": "Whether the board knows what the company’s AI agents may do without a person approving each step, including what they may spend and commit, and whether every agent has a limit, a spending ceiling, a way to stop it, and checks that exist in practice rather than only in a design document.",
+      "board_question": "What are our agents allowed to do on their own, and what stops them?",
+      "failure_line": "You cannot say what the agents are allowed to spend.",
+      "guide": {
+        "what": "Autonomy & Agent Authority means treating an AI agent as the board would treat an employee given signing authority. A director who has this competency knows what each agent may do, spend, and commit, has seen the current register of agents, has asked what an agent actually did in testing, knows where the check on its actions really happens, and requires management to show that every agent has a limit, a ceiling, and a way to stop it.",
+        "why": "Agents hold access to company systems and act between board meetings, at a speed and scale that a person could not. A limit that exists only in a design document is not a limit. This is often the competency boards have least of, because agents are new and the register that would show what they can do usually does not exist until someone asks for it.",
+        "how": "When an agent is discussed, ask what it may do on its own, including what it may spend and commit. At each risk review, ask to see the current register of agents. Ask what an agent actually did in testing and where the check on its actions happens. Require management to show that every agent has a limit, a ceiling, and a way to stop it.",
+        "example": "A director asks what the procurement agent can commit without a human. Nobody in the room knows. The answer, produced later, is any order under fifty thousand dollars. She asks for a ceiling to be set and for the register to be brought to the next risk review."
+      },
+      "floor_narrative": "Autonomy & Agent Authority sets your level at {floor}. This competency is about knowing what the company’s AI agents are allowed to do without a person approving each step, including what they can spend and commit, and whether anyone can produce that list. Agents hold access to company systems and act between board meetings, and this is often the competency boards have least of. Before the next meeting, ask for the register of AI agents with what each may do, spend, and commit. If no one can produce it, ask for that absence to be minuted.",
+      "items": [
+        {
+          "position": 1,
+          "statement": "When the board is briefed on an AI agent — a system that acts without a person approving each step — I ask what it may do on its own, including any money it may spend and any commitments it may make for the company."
+        },
+        {
+          "position": 2,
+          "statement": "I require management to show the board that every AI agent in use has a limit on what it may do, a ceiling on what it may spend or commit, and a way to stop it."
+        },
+        {
+          "position": 3,
+          "statement": "Whenever the board reviews AI risk, I ask to see the current register of the company’s AI agents and what each is permitted to do."
+        },
+        {
+          "position": 4,
+          "statement": "When management reports on an AI agent, I ask to see what it actually did in testing or in its first months of use, including anything it did that it was not meant to do."
+        },
+        {
+          "position": 5,
+          "statement": "When the controls on an AI agent are described to the board, I ask where the check on its actions actually happens, and challenge it if the check exists only on paper."
+        }
+      ],
+      "evidence_prompts": [
+        {
+          "position": 1,
+          "template": "Agent authority register requested, minutes {q}"
+        },
+        {
+          "position": 2,
+          "template": "Absence of register minuted {q}, item {n}"
+        },
+        {
+          "position": 3,
+          "template": "Stop mechanism required before launch, ref {n}"
+        },
+        {
+          "position": 4,
+          "template": "Agent spending limit set in minute {n}"
+        },
+        {
+          "position": 5,
+          "template": "Agent incident walkthrough {q}"
+        }
+      ]
+    }
+  ],
+  "reference": {
+    "sectors": [
+      "Financial Services",
+      "Healthcare & Life Sciences",
+      "Technology",
+      "Government & Public Sector",
+      "Manufacturing & Industrial",
+      "Retail & Consumer",
+      "Energy & Utilities",
+      "Education",
+      "Professional Services",
+      "Other"
+    ],
+    "company_sizes": [
+      "1–50",
+      "51–250",
+      "251–1,000",
+      "1,001–5,000",
+      "5,001–20,000",
+      "20,000+"
+    ],
+    "roles": [
+      "Board Chair",
+      "Lead Independent Director",
+      "Audit Committee Chair",
+      "Risk Committee Chair",
+      "Technology / AI Committee Chair",
+      "Nominating & Governance Chair",
+      "Compensation Committee Chair",
+      "Non-Executive Director",
+      "Executive Director",
+      "Board Observer",
+      "Board Candidate",
+      "Other"
+    ],
+    "tenures": [
+      "Under 1 year",
+      "1–3 years",
+      "4–6 years",
+      "7–10 years",
+      "Over 10 years"
+    ],
+    "guide_tabs": [
+      [
+        "what",
+        "What it is"
+      ],
+      [
+        "why",
+        "Why it matters"
+      ],
+      [
+        "how",
+        "How to build it"
+      ],
+      [
+        "example",
+        "What it looks like"
+      ]
+    ],
+    "correlation_metrics": [
+      {
+        "k": "agenda",
+        "label": "Meetings with AI as a decision item"
+      },
+      {
+        "k": "edu",
+        "label": "Hours of AI education taken"
+      },
+      {
+        "k": "seats",
+        "label": "Directors on the board"
+      }
+    ]
+  },
+  "thresholds": {
+    "practiced": 2.75,
+    "correlation_min_n": 30
+  },
+  "synthetic": {
+    "archetypes": {
+      "operator": {
+        "w": 0.13,
+        "t": [
+          3.8,
+          3.7,
+          3.6,
+          3.5,
+          3.8,
+          3.6,
+          3.4
+        ],
+        "note": "Does most of it as a matter of course. Agents are the last thing catching up."
+      },
+      "engaged": {
+        "w": 0.24,
+        "t": [
+          3.1,
+          3.2,
+          2.9,
+          2.8,
+          3.1,
+          2.9,
+          2.4
+        ],
+        "note": "Has done most of it at least once. Little of it is habit yet."
+      },
+      "briefed": {
+        "w": 0.24,
+        "t": [
+          2.3,
+          2.4,
+          2.2,
+          2.1,
+          2.4,
+          2.2,
+          1.9
+        ],
+        "stated": true,
+        "note": "Attends everything, understands most of it, has acted on none of it. Marks cluster at Aware."
+      },
+      "autonomyGap": {
+        "w": 0.16,
+        "t": [
+          3.4,
+          3.3,
+          3.2,
+          3,
+          3.3,
+          3.1,
+          1.4
+        ],
+        "note": "Fluent on governance, blank on what the agents are allowed to do. The case the floor rule is built for."
+      },
+      "specialist": {
+        "w": 0.13,
+        "t": [
+          3.6,
+          2.1,
+          3.3,
+          1.9,
+          3.4,
+          2.3,
+          2.6
+        ],
+        "note": "Deep where the committee remit runs, unaware elsewhere."
+      },
+      "newlySeated": {
+        "w": 0.1,
+        "t": [
+          1.6,
+          1.9,
+          1.5,
+          1.4,
+          1.8,
+          1.7,
+          1.2
+        ],
+        "note": "Recently appointed. Mostly unaware, and honest about it."
+      }
+    },
+    "sector_prior": {
+      "Financial Services": [
+        0.3,
+        0.2,
+        0,
+        0.1,
+        0.3,
+        0,
+        -0.1
+      ],
+      "Healthcare & Life Sciences": [
+        0.1,
+        0.4,
+        0.1,
+        0.2,
+        0.3,
+        0.1,
+        -0.2
+      ],
+      "Technology": [
+        -0.1,
+        0,
+        0.1,
+        -0.1,
+        0,
+        0.1,
+        0.5
+      ],
+      "Government & Public Sector": [
+        0.2,
+        0.1,
+        0.2,
+        0.3,
+        0,
+        0,
+        -0.5
+      ],
+      "Manufacturing & Industrial": [
+        -0.1,
+        -0.1,
+        -0.2,
+        -0.2,
+        0.2,
+        -0.1,
+        -0.2
+      ],
+      "Retail & Consumer": [
+        -0.1,
+        0,
+        -0.1,
+        -0.3,
+        -0.1,
+        -0.1,
+        0.1
+      ],
+      "Energy & Utilities": [
+        0.1,
+        0,
+        -0.1,
+        -0.1,
+        0.4,
+        -0.1,
+        -0.3
+      ],
+      "Education": [
+        -0.2,
+        0.1,
+        0.2,
+        0.3,
+        -0.2,
+        0.2,
+        -0.3
+      ],
+      "Professional Services": [
+        0,
+        -0.1,
+        0.1,
+        0,
+        -0.1,
+        0.3,
+        0
+      ],
+      "Other": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "rater_bias": {
+      "Board Chair": [
+        0.4,
+        0,
+        0.1,
+        0.1,
+        0.2,
+        0.2,
+        0
+      ],
+      "Lead Independent Director": [
+        0.3,
+        0,
+        0.1,
+        0.2,
+        0.2,
+        0.1,
+        0
+      ],
+      "Audit Committee Chair": [
+        0.4,
+        0.2,
+        0.2,
+        0,
+        0.3,
+        -0.1,
+        -0.2
+      ],
+      "Risk Committee Chair": [
+        0.3,
+        0.1,
+        0,
+        0,
+        0.5,
+        -0.1,
+        0
+      ],
+      "Technology / AI Committee Chair": [
+        0.2,
+        0.4,
+        0.3,
+        0.1,
+        0.3,
+        0.2,
+        0.6
+      ],
+      "Nominating & Governance Chair": [
+        0.3,
+        -0.2,
+        0.1,
+        0.4,
+        -0.1,
+        0.2,
+        -0.3
+      ],
+      "Compensation Committee Chair": [
+        0.1,
+        -0.3,
+        -0.1,
+        0.2,
+        -0.2,
+        0.3,
+        -0.4
+      ],
+      "Non-Executive Director": [
+        -0.1,
+        -0.2,
+        -0.1,
+        -0.1,
+        -0.1,
+        -0.1,
+        -0.3
+      ],
+      "Executive Director": [
+        0.2,
+        0.4,
+        0.2,
+        0,
+        0.2,
+        0.2,
+        0.3
+      ],
+      "Board Observer": [
+        -0.3,
+        -0.3,
+        -0.3,
+        -0.2,
+        -0.3,
+        -0.2,
+        -0.4
+      ]
+    },
+    "owns_by_role": {
+      "Audit Committee Chair": "GOV",
+      "Risk Committee Chair": "RIS",
+      "Technology / AI Committee Chair": "AUT",
+      "Nominating & Governance Chair": "FAI",
+      "Compensation Committee Chair": "HUM",
+      "Board Chair": "GOV"
+    }
+  }
+}

@@ -1,0 +1,330 @@
+/* The admin console.
+   Shares the public scorecard's palette so the two do not look like different
+   products, but is its own stylesheet: the admin is a working tool, denser and
+   plainer than the instrument it manages. */
+
+:root{
+  --ink:#060D18; --ink-2:#0A1628; --ink-3:#0F1F38;
+  --paper:#E8F0FA; --stone:#A0B4CA; --stone-2:#6F84A0;
+  --blue:#3D82C4; --blue-2:#5A9FDA; --blue-3:#7AB8E8;
+  --gold:#E8933F; --gold-2:#C56A18;
+  --rule:rgba(61,130,196,.24); --rule-soft:rgba(61,130,196,.12);
+  --r1:#D2564E; --r2:#8A9BB0; --r3:#3D82C4; --r4:#E8933F;
+  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --sans:'Public Sans','Helvetica Neue',Arial,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+  --num:'Public Sans','Helvetica Neue',Arial,sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+/* body.auth too: the sign-in and change-password pages. Without it they
+   rendered in black Times on the dark ground. */
+body.admin,body.auth{
+  background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:17px;
+  line-height:1.6;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;
+  text-rendering:optimizeLegibility;min-height:100vh;padding-top:64px;
+}
+a{color:var(--blue-2)}
+a:hover{color:var(--blue-3)}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ── top nav ─────────────────────────────────────────────────────────────
+   The single-file build's admin chrome: the same bar the public site uses,
+   with the sections swapped in. Both element types are named on every rule
+   because these are anchors and buttons, not the reference's buttons alone —
+   an anchor styled as a control otherwise renders underlined and blue. */
+body.admin > nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;
+  justify-content:space-between;padding:20px 40px;gap:20px;flex-wrap:wrap;
+  background:transparent;border-bottom:1px solid transparent;
+  transition:background .35s,padding .35s,border-color .35s;
+}
+/* Set by the scroll listener, as on the public site: the bar is transparent
+   over the top of the page and resolves into a solid one as it is scrolled. */
+body.admin > nav.scrolled{
+  background:rgba(6,13,24,.94);backdrop-filter:blur(14px);padding:13px 40px;
+  border-bottom-color:var(--rule-soft);
+}
+body.admin > nav .logo{
+  font-family:var(--serif);font-weight:700;font-size:23px;letter-spacing:-.01em;
+  color:var(--paper);background:none;border:0;text-decoration:none;
+}
+body.admin > nav .logo span{color:var(--blue)}
+.nav-links{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+.nav-links a,.nav-links button{
+  background:none;border:0;color:var(--stone);font-family:var(--sans);font-weight:500;
+  font-size:15px;padding:8px 12px;border-radius:3px;text-decoration:none;
+  display:inline-block;line-height:1.5;cursor:pointer;
+}
+.nav-links a:hover,.nav-links button:hover{color:var(--paper)}
+.nav-links a.active,.nav-links button.active{color:var(--paper);background:rgba(61,130,196,.12)}
+.nav-links .quiet-nav{color:var(--stone-2)}
+.nav-links .quiet-nav:hover{color:var(--paper)}
+
+/* The app a run of sections belongs to. Rendered only when more than one app
+   is mounted — with one, the bar is the reference's four items and this never
+   appears. Not a link: it names the group, it does not go anywhere. */
+.nav-links .nav-group{
+  font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--stone-2);padding:8px 4px 8px 14px;white-space:nowrap;
+}
+.nav-links .nav-group:first-child{padding-left:0}
+
+/* ── main ────────────────────────────────────────────────────────────── */
+.admin-main{padding:34px 0 70px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 40px}
+
+/* ── footer ──────────────────────────────────────────────────────────────
+   Each app's own footer (admin/_shell-footer.php), so the console keeps the
+   public site's. Rules as both reference builds declare them. */
+footer{margin-top:80px;padding:30px 40px;border-top:1px solid var(--rule-soft);color:var(--stone-2);font-size:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px 28px}
+footer .legal{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+footer .legal .copy{white-space:nowrap}
+footer .legal a{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--stone-2);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:1px}
+footer .legal a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+footer .legal .sep{color:var(--rule);user-select:none}
+
+.admin-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:26px}
+.eyebrow{font-size:14px;font-weight:600;color:var(--blue-2);margin-bottom:8px}
+h1.title{font-family:var(--serif);font-weight:700;font-size:clamp(28px,3.1vw,40px);line-height:1.15;letter-spacing:-.015em;margin-bottom:12px}
+h2.sub{font-family:var(--serif);font-weight:600;font-size:22px;line-height:1.3;letter-spacing:-.01em;margin:0 0 12px}
+.lede{color:var(--stone);font-size:18px;line-height:1.65;max-width:66ch;margin-bottom:26px}
+.muted{color:var(--stone)}
+.small{font-size:14px}
+.mono{font-variant-numeric:tabular-nums}
+hr.rule{border:0;border-top:1px solid var(--rule-soft);margin:32px 0}
+
+/* ── cards and stats ─────────────────────────────────────────────────── */
+.grid{display:grid;gap:16px}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+/* A wide cell and a narrow one, e.g. an email address beside a phone number. */
+.grid-wide-narrow{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}
+.card{background:var(--ink-2);border:1px solid var(--rule-soft);border-radius:4px;padding:24px}
+/* A notice panel and a chart panel, as the Enterprise reference declares them. */
+.callout{padding:18px 20px;border:1px solid var(--rule);border-radius:4px;background:var(--ink-2)}
+.callout h4{font-family:var(--serif);font-weight:600;font-size:20px;line-height:1.3;margin-bottom:8px}
+.callout p{color:var(--stone);font-size:16px;line-height:1.55}
+.radar-wrap{background:var(--ink-2);border:1px solid var(--rule-soft);border-radius:4px;padding:16px}
+.card h3{font-family:var(--serif);font-weight:600;font-size:17px;margin-bottom:4px}
+.card .cap{color:var(--stone-2);font-size:12.5px;margin-bottom:12px}
+.stat{background:var(--ink-2);border:1px solid var(--rule-soft);border-radius:4px;padding:18px;--c:var(--blue)}
+.stat .v{font-family:var(--num);font-size:32px;font-weight:700;letter-spacing:-.025em;line-height:1.1}
+.stat .k{font-size:13px;font-weight:500;color:var(--stone);margin-top:5px;line-height:1.4}
+
+/* ── tables ──────────────────────────────────────────────────────────── */
+table.data{width:100%;border-collapse:collapse;font-size:15px}
+table.data th{
+  text-align:left;font-size:13px;font-weight:600;color:var(--stone);
+  padding:9px 10px;border-bottom:1px solid var(--rule);white-space:nowrap;
+}
+table.data td{padding:11px 10px;border-bottom:1px solid var(--rule-soft)}
+table.data tr:hover td{background:rgba(61,130,196,.05)}
+table.data .num{text-align:right;font-family:var(--mono);font-size:13px}
+/* Opt-in: figures in the body face at the table's size, for a table that
+   copies a reference which drew them that way (the Enterprise organisation
+   dialog's Movement table). Headers keep their 13px. */
+table.data.sans-num .num{font-family:inherit;font-variant-numeric:tabular-nums}
+table.data.sans-num td.num{font-size:inherit}
+table.data tr.clickable{cursor:pointer}
+/* A clickable row may carry a real link in its first cell, so the row works
+   without scripting and ctrl-click still opens the page. It is the row that
+   reads as the control, so the link is not painted as one. */
+table.data tr.clickable a{color:inherit;text-decoration:none}
+
+/* ── pills, tags, bars ───────────────────────────────────────────────── */
+.tag{
+  display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:3px;
+  border:1px solid var(--rule);color:var(--stone);
+}
+.tag.syn{border-color:rgba(210,86,78,.5);color:var(--r1)}
+.tag.gold{border-color:rgba(232,147,63,.5);color:var(--gold)}
+.pill{
+  font-size:12px;font-weight:500;padding:2px 7px;
+  border:1px solid var(--rule-soft);border-radius:3px;color:var(--stone);
+}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.bar-track{height:6px;background:rgba(61,130,196,.12);border-radius:3px;overflow:hidden}
+.bar-track i{display:block;height:100%;background:var(--c,var(--blue));border-radius:3px}
+
+/* ── forms ───────────────────────────────────────────────────────────── */
+label.f{display:block;font-size:14px;font-weight:600;color:var(--paper);margin-bottom:6px}
+input.f,select.f,textarea.f{
+  width:100%;background:var(--ink-3);border:1px solid var(--rule);border-radius:3px;
+  color:var(--paper);font-family:var(--sans);font-size:16px;padding:11px 12px;
+}
+textarea.f{min-height:72px;resize:vertical}
+select.f{appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,var(--stone) 50%),linear-gradient(135deg,var(--stone) 50%,transparent 50%);
+  background-position:calc(100% - 18px) 50%,calc(100% - 12px) 50%;background-size:6px 6px;background-repeat:no-repeat}
+input.f:focus,select.f:focus,textarea.f:focus{border-color:var(--blue);outline:none}
+.hint{color:var(--stone-2);font-size:14px;line-height:1.5;margin-top:6px}
+.btn{
+  display:inline-block;background:transparent;border:1px solid var(--blue);border-radius:3px;
+  color:var(--paper);font-size:16px;font-weight:500;padding:12px 22px;
+  transition:background .15s,color .15s;text-decoration:none;line-height:1.5;
+}
+.btn:hover{background:var(--blue);color:#fff}
+.btn.gold{border-color:var(--gold);color:var(--gold)}
+.btn.quiet{border-color:var(--rule);color:var(--stone)}
+.btn.quiet:hover{background:rgba(61,130,196,.12);color:var(--paper)}
+.btn.gold:hover{background:var(--gold);color:var(--ink)}
+.btn.danger{border-color:var(--r1);color:var(--r1)}
+.btn.danger:hover{background:var(--r1);color:var(--paper)}
+.btn.sm{font-size:15px;padding:8px 15px}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+/* Submitted, waiting for the reply. The label is swapped for the button's own
+   data-busy wording and this draws the ring in front of it, so a slow run —
+   seeding forty boards is seconds of work — says so rather than looking dead
+   or inviting a second press. */
+.btn.is-busy{opacity:.75;cursor:progress}
+.btn.is-busy::before{
+  content:'';display:inline-block;width:11px;height:11px;margin-right:8px;vertical-align:-1px;
+  border:2px solid currentColor;border-right-color:transparent;border-radius:50%;
+  animation:btn-spin .6s linear infinite;
+}
+@keyframes btn-spin{to{transform:rotate(360deg)}}
+/* Not removed: a ring that does not turn reads as a broken button rather than
+   a waiting one. Slowed to where it is no longer a flicker. */
+@media (prefers-reduced-motion:reduce){.btn.is-busy::before{animation-duration:2.4s}}
+.err{color:var(--r1);font-size:14px;font-weight:500;margin-top:6px}
+.notice{
+  background:rgba(232,147,63,.1);border:1px solid rgba(232,147,63,.35);
+  border-radius:4px;padding:12px 14px;font-size:14px;margin-bottom:18px;
+}
+.notice b{color:var(--gold)}
+
+/* ── toast ───────────────────────────────────────────────────────────── */
+.toast{
+  position:fixed;bottom:28px;left:50%;transform:translateX(-50%);
+  background:var(--ink-3);border:1px solid var(--rule);border-radius:4px;color:var(--paper);
+  padding:12px 18px;font-size:15px;font-weight:500;opacity:0;pointer-events:none;transition:opacity .2s;z-index:100;
+}
+.toast.show{opacity:1}
+
+/* ── sign-in (no shell) ──────────────────────────────────────────────── */
+body.auth{display:block;background:var(--ink);padding-top:0}
+.auth-wrap{max-width:380px;margin:0 auto;padding:90px 24px}
+.auth-wrap .admin-logo{padding:0;margin-bottom:26px}
+.auth-wrap .field{margin-bottom:14px}
+.auth-wrap .btn{width:100%;text-align:center;margin-top:6px}
+.auth-note{color:var(--stone-2);font-size:12.5px;margin-top:22px;line-height:1.5}
+
+/* ── Dashboard ─────────────────────────────────────────────────────────────
+   Ported verbatim from the single-file build's analytics screen, which is the
+   design being matched. It reads the same palette variables declared above, so
+   nothing here needs re-theming — only the markup that uses it had to be
+   rebuilt to the same shape. */
+
+.filterbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:14px 16px;background:var(--ink-2);border:1px solid var(--rule-soft);border-radius:4px;margin-bottom:22px}
+.filterbar .fl{font-size:13px;font-weight:600;color:var(--stone-2);margin-right:2px}
+.filterbar select,.filterbar input{background:var(--ink-3);border:1px solid var(--rule);color:var(--paper);padding:7px 10px;font-family:var(--sans);font-size:14px;border-radius:3px}
+
+.chip{font-size:13px;font-weight:500;padding:5px 10px;border:1px solid var(--rule);border-radius:3px;color:var(--stone);background:none;cursor:pointer;
+      text-decoration:none;display:inline-block;line-height:1.5}
+.chip.on{border-color:var(--gold);color:var(--gold)}
+
+/* Tabs are anchors here, not buttons — each pane is its own URL, so a filtered
+   view can be linked, bookmarked and reloaded. Both element types are named
+   because an anchor styled as a control otherwise renders underlined and blue. */
+.dash-tabs{display:flex;gap:2px;border-bottom:1px solid var(--rule-soft);margin:22px 0;flex-wrap:wrap}
+.dash-tabs a,.dash-tabs button{background:none;border:0;color:var(--stone);font-size:15px;font-weight:500;padding:11px 18px;
+      border-bottom:2px solid transparent;margin-bottom:-1px;text-decoration:none;display:inline-block;cursor:pointer}
+.dash-tabs a.on,.dash-tabs button.on{color:var(--paper);border-bottom-color:var(--gold)}
+
+.chart-card{background:var(--ink-2);border:1px solid var(--rule-soft);border-radius:4px;padding:20px}
+.chart-card h4{font-family:var(--serif);font-weight:600;font-size:19px;line-height:1.3;margin-bottom:4px}
+.chart-card .cap{font-size:14px;line-height:1.5;color:var(--stone);margin-bottom:14px}
+
+.stack{display:flex;height:26px;border-radius:3px;overflow:hidden;border:1px solid var(--rule-soft)}
+.stack i{display:block}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:13px;font-weight:500;color:var(--stone)}
+.legend span::before{content:'';display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--c);margin-right:6px}
+
+.delta{font-size:15px;font-weight:600}
+.delta.up{color:#4FA97C}
+.delta.down{color:var(--r1)}
+
+.qrow{display:grid;grid-template-columns:1fr 130px 54px;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--rule-soft);font-size:15px;line-height:1.45}
+.qrow .mini{height:6px;background:var(--ink-3);border:1px solid var(--rule-soft);position:relative;border-radius:2px;overflow:hidden}
+.qrow .mini i{position:absolute;inset:0 auto 0 0;background:var(--c)}
+
+.warnbox{padding:14px 18px;border-left:3px solid var(--r1);background:rgba(210,86,78,.07);font-size:16px;line-height:1.55;color:var(--paper);border-radius:0 3px 3px 0}
+.warnbox b{color:var(--r1)}
+
+.empty{padding:40px;text-align:center;color:var(--stone);border:1px dashed var(--rule);border-radius:4px}
+.empty b{display:block;color:var(--paper);font-weight:600;font-size:21px;font-family:var(--serif);margin-bottom:6px}
+
+/* Competency bars — the same markup the public result page uses, so the two
+   never drift. `.sp` is the min–max spread across the filtered set, which only
+   the admin draws. */
+.bars{display:grid;gap:12px}
+.brow{display:grid;grid-template-columns:220px 1fr 58px 110px;gap:14px;align-items:center}
+.brow .k{font-size:15px;line-height:1.35}
+.brow .k .code{font-size:12px;font-weight:600;color:var(--stone-2);margin-right:7px}
+.brow .track{height:10px;background:var(--ink-3);border:1px solid var(--rule-soft);position:relative;border-radius:2px;overflow:hidden}
+.brow .track i{position:absolute;left:0;top:0;bottom:0;background:var(--c)}
+.brow .track .sp{position:absolute;top:0;bottom:0;background:rgba(232,240,250,.22);border-left:1px solid rgba(232,240,250,.6);border-right:1px solid rgba(232,240,250,.6)}
+.brow .v{font-size:16px;font-weight:600;text-align:right}
+.brow .b{font-size:13px;font-weight:600;color:var(--c)}
+.brow.weak .k{color:var(--gold)}
+.brow.unscored .k,.brow.unscored .v,.brow.unscored .b{color:var(--stone-2)}
+
+/* One scorecard, as a row on the Research data screen. */
+.rec{display:grid;grid-template-columns:1fr auto;gap:16px;padding:16px 0;border-top:1px solid var(--rule-soft)}
+.rec .t{font-size:16px;font-weight:500}
+.rec .m{font-size:14px;color:var(--stone);margin-top:4px;line-height:1.5}
+.rec .s{font-family:var(--num);font-size:26px;font-weight:700;letter-spacing:-.02em;text-align:right;color:var(--c)}
+.rec .s small{display:block;font-size:12px;font-weight:500;letter-spacing:0;color:var(--stone);margin-top:2px}
+/* The row is a link to that scorecard. An anchor otherwise renders underlined
+   and blue, and `.rec` is a grid, which an inline anchor is not. */
+a.rec{text-decoration:none;color:inherit}
+a.rec:hover{background:rgba(61,130,196,.05)}
+
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:18px 0}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--rule-soft);margin-bottom:22px;flex-wrap:wrap}
+.tabs a,.tabs button{background:none;border:0;color:var(--stone);font-size:15px;font-weight:500;padding:10px 14px;
+      border-bottom:2px solid transparent;margin-bottom:-1px;text-decoration:none;display:inline-block;cursor:pointer}
+.tabs a.on,.tabs button.on{color:var(--paper);border-bottom-color:var(--gold)}
+
+.dim-head{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;margin-bottom:52px}
+.dim-head .code{font-size:14px;font-weight:600;color:var(--gold);padding-top:8px;letter-spacing:.01em}
+.dim-head h2{font-family:var(--serif);font-weight:700;font-size:30px;line-height:1.18;letter-spacing:-.015em;margin-bottom:8px}
+.dim-head p{color:var(--stone);max-width:64ch}
+.board-q{margin-top:12px;font-family:var(--serif);color:var(--blue-3);font-size:18px;line-height:1.45;padding-left:12px;border-left:2px solid rgba(122,184,232,.35)}
+
+.analysis{font-family:var(--serif);font-size:18px;line-height:1.62;color:var(--paper)}
+h3.sub{font-family:var(--serif);font-weight:600;font-size:22px;line-height:1.3;letter-spacing:-.01em;margin:0 0 12px}
+
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px}
+.form .full{grid-column:1/-1}
+
+/* Dialogs, verbatim from the reference: the Data seeder opens as one there. */
+.modal-bg{position:fixed;inset:0;background:rgba(6,13,24,.8);backdrop-filter:blur(6px);z-index:90;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal{background:var(--ink-2);border:1px solid var(--rule);border-radius:4px;max-width:560px;width:100%;max-height:90vh;overflow:auto;padding:28px}
+.modal h3{font-family:var(--serif);font-weight:700;font-size:24px;line-height:1.25;letter-spacing:-.012em;margin-bottom:6px}
+.modal.wide{max-width:900px}
+.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:36px;gap:12px}
+.checks label{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-top:1px solid var(--rule-soft);cursor:pointer;font-size:16px;line-height:1.5}
+.checks input{margin-top:4px;accent-color:var(--gold)}
+/* A console row: the same ruled row as a checkbox line, but nothing in it is
+   labelable. A div on purpose — the reference put its Delete and Wipe buttons
+   inside <label>, where clicking the sentence activates the button beside it. */
+.checks .row{display:flex;gap:12px;align-items:center;padding:13px 0;border-top:1px solid var(--rule-soft);font-size:16px;line-height:1.5}
+
+/* The email + phone pair stays one row wherever a dialog has room for it;
+   it stacks only on a phone. minmax(0,…) so a one-line email cannot stretch
+   the column past the screen. */
+@media (max-width:560px){
+  .grid-wide-narrow{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:900px){
+  body.admin > nav{padding:12px 20px}
+  .wrap{padding:0 20px}
+  .admin-main{padding:24px 0 60px}
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+  .qrow{grid-template-columns:1fr 90px 46px}
+}

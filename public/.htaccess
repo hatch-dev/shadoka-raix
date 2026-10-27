@@ -1,0 +1,56 @@
+# public/ is the document root. Everything above it — platform/, apps/,
+# config/, database/, storage/, .env — sits outside and is unreachable by URL
+# even if a rewrite rule is missed or mod_rewrite is off. That is the whole
+# reason for this directory.
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # No RewriteBase: the substitution resolves against this directory, so the
+    # platform works at a vhost root or in a subfolder without configuration.
+
+    # Real files and directories (published assets) are served directly.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>
+
+# Never list a directory. assets/ in particular is a published tree.
+Options -Indexes
+
+# Dotfiles are never served.
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Asset URLs carry ?v=<mtime> from asset(), so a republished file is a new URL
+# and these long lifetimes cannot serve a stale stylesheet. Do not lengthen
+# these without checking that fingerprinting is still in place — this comment
+# previously claimed a fingerprinting step that did not exist.
+#
+# JavaScript is the exception. asset() fingerprints the ENTRY script, but that
+# script then does `import { x } from './ui.js'` — a bare relative path the
+# server never sees generated, and which therefore carries no ?v=. A changed
+# shared module would be served from cache while its fingerprinted importer was
+# fresh, which fails as a module-not-found error rather than as stale styling.
+# Fingerprinting imports needs a build step; revalidating does not, and the
+# ETag makes an unchanged file a cheap 304.
+<IfModule mod_headers.c>
+    <FilesMatch "\.js$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
+</IfModule>
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>

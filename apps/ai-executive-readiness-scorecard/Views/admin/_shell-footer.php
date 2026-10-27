@@ -1,0 +1,92 @@
+<?php
+/**
+ * The admin footer: this app's public footer, so it stays on screen when the
+ * console opens, as it did in the reference (its admin views were the public
+ * page with the nav swapped). Keep it in step with Views/layouts/public.php.
+ */
+?>
+<footer>
+  <div>The AI Executive Readiness Scorecard. A SHADOKA research edition.</div>
+  <div class="legal">
+    <span class="copy"><?= e($copyright ?? '') ?></span>
+    <span>
+      <a href="https://shadoka.com/terms/" target="_blank" rel="noopener noreferrer">Terms of Use</a>
+      <span class="sep"> &nbsp;|&nbsp; </span>
+      <a href="https://shadoka.com/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+    </span>
+  </div>
+</footer>
+
+<?php
+/*
+ * The custom cursor — the gold dot and the ring that trails it — which the
+ * reference kept on every screen, admin included. The public site draws it
+ * from ui.js (a module the admin shell does not load), so this is the same
+ * rules from base.css and a plain-script copy of initCursor(). Keep the two in
+ * step. Only for a fine pointer and without reduced motion, as there.
+ */
+?>
+<?php
+/*
+ * The PDF buttons' script, once for every admin page. The console, the record
+ * dialog and the organisation dialog can each open over ANY admin screen (the
+ * Console is in the bar), so a button's script loaded only by the page it was
+ * first built for left a dead PDF button everywhere else. It listens on the
+ * document, so loading it twice would save every PDF twice — this is the only
+ * place it may be included. jsPDF itself is fetched only when a button is
+ * pressed.
+ */
+$pdfSlug = $slug ?? 'ai-executive-readiness-scorecard';
+?>
+<script type="module" src="<?= e(app_asset($pdfSlug, 'js/admin-pdf.js')) ?>"></script>
+
+<div class="cursor" id="cur"></div><div class="cursor-ring" id="curRing"></div>
+<style>
+  @media (hover:hover) and (pointer:fine) {
+    body.cursorfx, body.cursorfx a, body.cursorfx button, body.cursorfx select,
+    body.cursorfx input, body.cursorfx label { cursor: none }
+  }
+  .cursor { position: fixed; width: 7px; height: 7px; background: var(--gold); border-radius: 50%;
+    pointer-events: none; z-index: 9999; transform: translate(-50%, -50%);
+    transition: width .2s, height .2s, background .2s; display: none }
+  .cursor-ring { position: fixed; width: 30px; height: 30px; border: 1px solid rgba(61, 130, 196, .55);
+    border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%);
+    transition: width .25s, height .25s, border-color .25s; display: none }
+  body.cursorfx .cursor, body.cursorfx .cursor-ring { display: block }
+  .cursor.hot { width: 11px; height: 11px }
+  .cursor-ring.hot { width: 44px; height: 44px; border-color: rgba(232, 147, 63, .7) }
+</style>
+<script>
+  (function () {
+    var reduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var finePointer = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+    var dot = document.getElementById('cur');
+    var ring = document.getElementById('curRing');
+    if (!finePointer || reduced || !dot || !ring) return;
+
+    document.body.classList.add('cursorfx');
+
+    var ringX = 0, ringY = 0, targetX = 0, targetY = 0;
+
+    document.addEventListener('mousemove', function (event) {
+      targetX = event.clientX;
+      targetY = event.clientY;
+      dot.style.left = targetX + 'px';
+      dot.style.top = targetY + 'px';
+    });
+
+    (function follow() {
+      ringX += (targetX - ringX) * 0.16;
+      ringY += (targetY - ringY) * 0.16;
+      ring.style.left = ringX + 'px';
+      ring.style.top = ringY + 'px';
+      requestAnimationFrame(follow);
+    })();
+
+    document.addEventListener('mouseover', function (event) {
+      var hot = event.target.closest('button,a,select,input,label,.rec,tr.clickable');
+      dot.classList.toggle('hot', Boolean(hot));
+      ring.classList.toggle('hot', Boolean(hot));
+    });
+  })();
+</script>

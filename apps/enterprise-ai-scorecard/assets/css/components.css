@@ -1,0 +1,176 @@
+/* The chrome: the fixed nav, the view/wrap containers, and the level ladder the
+   "How scoring works" dialog prints.
+   Moved from Enterprise_AI_Scorecard/index.html. */
+
+/* nav */
+nav {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   z-index: 50;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 20px 40px;
+   background: transparent;
+   border-bottom: 1px solid transparent;
+   transition: background .3s, padding .3s, border-color .3s
+}
+
+nav.scrolled {
+   background: rgba(6, 13, 24, .94);
+   backdrop-filter: blur(14px);
+   padding: 13px 40px;
+   border-bottom-color: var(--rule-soft)
+}
+
+/* The nav is fixed, so the page needs its height back. */
+body {
+   padding-top: 64px
+}
+
+/* The reference's logo and nav items are <button>s; these are anchors, because
+   they navigate. A button gets `line-height: normal` from the user agent while
+   an anchor inherits the body's 1.6, which made every item 5–7px taller and the
+   whole bar 83px instead of 76. Stated explicitly on both, so the two element
+   types measure the same. */
+.logo {
+   font-family: var(--serif);
+   font-weight: 700;
+   font-size: 23px;
+   line-height: normal;
+   letter-spacing: -.01em;
+   color: var(--paper);
+   background: none;
+   border: 0;
+   text-decoration: none
+}
+
+.logo:hover {
+   color: var(--paper)
+}
+
+.logo span {
+   color: var(--blue)
+}
+
+.nav-links {
+   display: flex;
+   gap: 4px;
+   align-items: center;
+   flex-wrap: wrap
+}
+
+.nav-links a,
+.nav-links button {
+   background: none;
+   border: 0;
+   color: var(--stone);
+   font-family: var(--sans);
+   font-weight: 500;
+   font-size: 15px;
+   /* `normal`, which is what the reference's <button>s get from the user agent.
+      The anchors here would otherwise inherit the body's 1.6 and render 7px
+      taller than the buttons beside them. */
+   line-height: normal;
+   padding: 8px 12px;
+   border-radius: 3px;
+   text-decoration: none;
+   transition: color .2s, background .2s, border-color .2s
+}
+
+.nav-links a:hover,
+.nav-links button:hover {
+   color: var(--paper)
+}
+
+.nav-links a.active,
+.nav-links button.active {
+   color: var(--paper);
+   background: rgba(61, 130, 196, .12)
+}
+
+.nav-links .boxed {
+   border: 1px solid var(--blue);
+   color: var(--paper)
+}
+
+.nav-links .boxed:hover {
+   background: rgba(61, 130, 196, .14)
+}
+
+.nav-links .primary {
+   border: 1px solid var(--gold);
+   color: var(--gold);
+   margin-left: 8px
+}
+
+.nav-links .primary:hover {
+   background: var(--gold);
+   color: var(--ink)
+}
+
+.nav-links button.quiet-nav {
+   color: var(--stone-2)
+}
+
+.nav-links button.quiet-nav:hover {
+   color: var(--paper)
+}
+
+/* views */
+.view {
+   display: none
+}
+
+.view.active {
+   display: block
+}
+
+.wrap {
+   max-width: 1100px;
+   margin: 0 auto;
+   padding: 0 40px
+}
+
+.wrap-n {
+   max-width: 820px;
+   margin: 0 auto;
+   padding: 0 40px
+}
+
+/* The five levels, as the "How scoring works" dialog lists them.
+   The reference built these rows with inline styles inside a template string;
+   here they are classes, so the dialog's markup carries no colour of its own and
+   the level colour comes from the instrument on a custom property. */
+.rung-row {
+   display: flex;
+   gap: 12px;
+   padding: 10px 0;
+   border-top: 1px solid var(--rule-soft)
+}
+
+.rung-name {
+   color: var(--c);
+   min-width: 120px;
+   font-size: 15px;
+   font-weight: 600
+}
+
+.rung-desc {
+   font-size: 15px;
+   line-height: 1.5;
+   color: var(--stone)
+}
+
+@media (max-width:900px) {
+   nav {
+      padding: 12px 20px
+   }
+
+   .wrap,
+   .wrap-n {
+      padding: 0 20px
+   }
+}

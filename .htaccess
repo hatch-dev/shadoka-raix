@@ -1,0 +1,67 @@
+# Fallback hardening for a plain-XAMPP deployment.
+#
+# The intended setup is a vhost whose document root is RAIX/public — then this
+# file is never consulted. But under htdocs the whole RAIX folder is reachable,
+# so this does three things: refuses everything that must never be served,
+# mounts the platform at /dev, and leaves every other folder here alone.
+#
+# Three things sit side by side in this directory and only ONE of them is the
+# application:
+#
+#   /RAIX/dev/                      the database-driven platform (public/ is its root)
+#   /RAIX/{slug}/, /RAIX/admin/...  apps moved out of /dev (config/apps.php unmounted)
+#   /RAIX/RAIX_Director_Scorecard/  a standalone single-file HTML build
+#   /RAIX/Enterprise_AI_Scorecard/  a standalone single-file HTML build
+#
+# The two standalone builds are plain index.html trees that Apache serves on
+# its own. Nothing here may rewrite them. This file used to end with a
+# catch-all that sent EVERY request into public/, which 404'd both of them.
+#
+# Belt and braces on purpose. A denial list that is the ONLY protection fails
+# open the moment a rule is missed; a denial list behind a public/ document
+# root is a second lock.
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Source, config, data and secrets are never served, rewrite or not.
+    RewriteRule ^(platform|apps|config|database|storage|scripts|tests|docs|reference|vendor|node_modules)(/|$) - [F,L]
+
+    # /dev is the platform's mount and public/ is its document root, so /public
+    # never appears in a URL. APP_MOUNT in .env must name this same segment:
+    # SCRIPT_NAME still says /RAIX/public, so nothing in PHP can discover /dev
+    # on its own and every generated link would drop it.
+    #
+    # The substitutions on the two external redirects are built from
+    # REQUEST_URI deliberately. A relative one resolves against the FILESYSTEM
+    # path when no RewriteBase is set, which sends the browser to
+    # http://localhost/C:/xampp/htdocs/RAIX/dev/.
+    RewriteRule ^dev$ %{REQUEST_URI}/ [R=302,L]
+
+    RewriteRule ^dev/(.*)$ public/$1 [QSA,L]
+
+    # Every app-shaped path OUTSIDE the mount (/RAIX/{slug}/..., /RAIX/admin/...)
+    # goes to the front controller too. Which apps actually live out here is
+    # config/apps.php 'unmounted' and nothing else: Platform\Core\MountGuard
+    # redirects any request on the wrong side of the mount to the right one,
+    # so moving one is a config edit with no command to run. Real files and
+    # folders (the standalone builds) are never rewritten.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^[a-z0-9]+(-[a-z0-9]+)*(/.*)?$ public/index.php [QSA,L]
+
+    # The RAIX root is a signpost to the mount, nothing more. 302 and not 301:
+    # /dev is a temporary mount, and a cached permanent redirect would outlive
+    # the day it moves.
+    RewriteRule ^$ %{REQUEST_URI}dev/ [R=302,L]
+</IfModule>
+
+<FilesMatch "^(\.env.*|composer\.(json|lock)|\.gitignore|.*\.md|.*\.sql)$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+Options -Indexes

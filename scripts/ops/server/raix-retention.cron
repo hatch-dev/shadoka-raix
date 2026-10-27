@@ -1,0 +1,41 @@
+# /etc/cron.d/raix-retention — RAIX daily deletion job (directive C3) and log trimming (C6)
+#
+# Install (as root, on the server that runs RAIX):
+#   cp scripts/ops/server/raix-retention.cron /etc/cron.d/raix-retention
+#   chmod 644 /etc/cron.d/raix-retention
+# then check RAIX and PHP below, and the user column: it must be the user the
+# web server runs as (www-data on Debian/Ubuntu, apache on Amazon Linux/RHEL),
+# because the job writes the app log and the same database settings the site
+# does. cron reads /etc/cron.d by itself; nothing needs restarting.
+#
+# Each job deletes every record its app holds that was completed more than 24
+# months ago, whole, then trims every log in config/logging.php to 30 days and
+# redacts email addresses in what it keeps. Each prints counts only — never a
+# record — and appends them to storage/logs/retention-YYYY-MM-DD.log, one
+# file a day, which the same job deletes whole once it is 30 days old. (The
+# % in date +\%F is escaped because cron treats a bare % as a newline.)
+#
+# The jobs also run themselves at most once a day when their page or API is
+# used, so a missed night does not break the promise; this schedule makes it
+# happen on days nobody visits.
+#
+# Verify after the first night:  php $RAIX/scripts/ops/check-retention.php
+# (exit 0 = every app ran in the last 26 hours).
+
+SHELL=/bin/sh
+PATH=/usr/local/bin:/usr/bin:/bin
+RAIX=/var/www/shadoka.com/public_html/RAIX
+PHP=/usr/bin/php
+
+# m  h  dom mon dow  user      command
+20  3  *   *   *    www-data  $PHP $RAIX/apps/ai-sovereignty-scorecard/scripts/retention.php       >> $RAIX/storage/logs/retention-$(date +\%F).log 2>&1
+25  3  *   *   *    www-data  $PHP $RAIX/apps/enterprise-ai-scorecard/scripts/retention.php        >> $RAIX/storage/logs/retention-$(date +\%F).log 2>&1
+30  3  *   *   *    www-data  $PHP $RAIX/apps/raix-director-scorecard-public/scripts/retention.php >> $RAIX/storage/logs/retention-$(date +\%F).log 2>&1
+35  3  *   *   *    www-data  $PHP $RAIX/apps/ai-executive-readiness-scorecard/scripts/retention.php >> $RAIX/storage/logs/retention-$(date +\%F).log 2>&1
+40  3  *   *   *    www-data  $PHP $RAIX/apps/human-edge-scorecard/scripts/retention.php             >> $RAIX/storage/logs/retention-$(date +%F).log 2>&1
+
+# Optional, C3 backups: delete manual snapshots of the scorecard data before
+# day 29. Needs the AWS CLI and credentials on this server (an instance role
+# with the backup/rds/ec2/lightsail rights the script uses). Fill in the
+# resources first — see scripts/ops/README.md — and uncomment.
+# 40 3 * * *  www-data  $PHP $RAIX/scripts/ops/aws-backup-retention.php --region=us-east-1 --rds=CHANGE-ME --apply >> $RAIX/storage/logs/retention-$(date +\%F).log 2>&1

@@ -1,0 +1,77 @@
+/*
+ * The Human Edge console's own styles: the page's rules for what its admin views
+ * draw (stat cards, record rows, skill bars, the analytics tables, level bars,
+ * the histogram, chips), copied from page/Human_Edge_Scorecard.html so the
+ * console renders them as the page does. Linked from admin/_shell-brand.php,
+ * after the platform's admin.css, so these win where the two differ.
+ */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:3px;border:1px solid var(--rule);color:var(--stone)}
+.tag.syn{border-color:rgba(210,86,78,.5);color:var(--r1)}
+.tag.gold{border-color:rgba(232,147,63,.5);color:var(--gold)}
+.bars{display:grid;gap:12px}
+.brow{display:grid;grid-template-columns:220px 1fr 58px 110px;gap:14px;align-items:center}
+.brow .k{font-size:15px;line-height:1.35}
+.brow .k .code{font-size:12px;font-weight:600;color:var(--stone-2);margin-right:7px}
+.brow .track{height:10px;background:var(--ink-3);border:1px solid var(--rule-soft);position:relative;border-radius:2px;overflow:hidden}
+.brow .track i{position:absolute;left:0;top:0;bottom:0;background:var(--c)}
+.brow .track .sp{position:absolute;top:0;bottom:0;background:rgba(232,240,250,.22);border-left:1px solid rgba(232,240,250,.6);border-right:1px solid rgba(232,240,250,.6)}
+.brow .v{font-size:16px;font-weight:600;text-align:right}
+.brow .b{font-size:13px;font-weight:600;color:var(--c)}
+.brow.weak .k{color:var(--gold)}
+.brow.unscored .k,.brow.unscored .v,.brow.unscored .b{color:var(--stone-2)}
+.radar-wrap{background:var(--ink-2);border:1px solid var(--rule-soft);border-radius:4px;padding:16px}
+.callout{padding:18px 20px;border:1px solid var(--rule);border-radius:4px;background:var(--ink-2)}
+.callout h4{font-family:var(--serif);font-weight:600;font-size:20px;line-height:1.3;margin-bottom:8px}
+.callout p{color:var(--stone);font-size:16px;line-height:1.55}
+.rec{display:grid;grid-template-columns:1fr auto;gap:16px;padding:16px 0;border-top:1px solid var(--rule-soft)}
+.rec .t{font-size:16px;font-weight:500}
+.rec .m{font-size:14px;color:var(--stone);margin-top:4px;line-height:1.5}
+.rec .s{font-family:var(--num);font-size:26px;font-weight:700;letter-spacing:-.02em;text-align:right;color:var(--c)}
+.rec .s small{display:block;font-size:12px;font-weight:500;letter-spacing:0;color:var(--stone);margin-top:2px}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.pill{font-size:12px;font-weight:500;padding:2px 7px;border:1px solid var(--rule-soft);border-radius:3px;color:var(--stone)}
+.stat{padding:18px;border:1px solid var(--rule-soft);border-radius:4px;background:var(--ink-2)}
+.stat .v{font-family:var(--num);font-size:32px;font-weight:700;letter-spacing:-.025em;line-height:1.1}
+.stat .k{font-size:13px;font-weight:500;color:var(--stone);margin-top:5px;line-height:1.4}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:18px 0}
+.empty{padding:40px;text-align:center;color:var(--stone);border:1px dashed var(--rule);border-radius:4px}
+.empty b{display:block;color:var(--paper);font-family:var(--serif);font-weight:600;font-size:21px;margin-bottom:6px}
+.filterbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:14px 16px;background:var(--ink-2);border:1px solid var(--rule-soft);border-radius:4px;margin-bottom:22px}
+.filterbar .fl{font-size:13px;font-weight:600;color:var(--stone-2);margin-right:2px}
+.filterbar select,.filterbar input{background:var(--ink-3);border:1px solid var(--rule);color:var(--paper);padding:7px 10px;font-family:var(--sans);font-size:14px;border-radius:3px}
+.chip{font-size:13px;font-weight:500;padding:5px 10px;border:1px solid var(--rule);border-radius:3px;color:var(--stone);background:none}
+.chip.on{border-color:var(--gold);color:var(--gold)}
+.chart-card{background:var(--ink-2);border:1px solid var(--rule-soft);border-radius:4px;padding:20px}
+.chart-card h4{font-family:var(--serif);font-weight:600;font-size:19px;line-height:1.3;margin-bottom:4px}
+.chart-card .cap{font-size:14px;line-height:1.5;color:var(--stone);margin-bottom:14px}
+.warnbox{padding:14px 18px;border-left:3px solid var(--r1);background:rgba(210,86,78,.07);font-size:16px;line-height:1.55;color:var(--paper);border-radius:0 3px 3px 0}
+.warnbox b{color:var(--r1)}
+.next-list{display:grid;gap:14px}
+.next-item{border-left:3px solid var(--rule);padding:4px 0 4px 16px}
+.next-item .next-k{font-size:13px;font-weight:600;color:var(--stone);margin-bottom:4px}
+.next-item p{margin:0;font-size:16px;line-height:1.55}
+.sub-n{font-weight:400;color:var(--stone)}
+.an-table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.an-table th{font-size:12px;font-weight:600;color:var(--stone);text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);white-space:nowrap}
+.an-table td{padding:9px 10px;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+.an-table .r{text-align:right;white-space:nowrap}
+.an-table tr.tot td{border-bottom:1px solid var(--rule)}
+.an-table tr.hl td{background:rgba(232,147,63,.08)}
+.an-table tr.sup td{color:var(--stone)}
+.tscroll{overflow-x:auto;margin-bottom:6px}
+.lvstack{display:flex;height:12px;border-radius:3px;overflow:hidden;background:var(--rule-soft);min-width:140px}
+.lvstack i{display:block;height:100%}
+.lvkey{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;margin:0 0 12px}
+.lvkey i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.hist{display:flex;align-items:flex-end;gap:6px;height:180px;margin-bottom:30px;border-bottom:1px solid var(--rule)}
+.hcol{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;position:relative}
+.hbar{width:100%;border-radius:2px 2px 0 0}
+.hn{font-size:11px;color:var(--stone);margin-bottom:3px}
+.hx{position:absolute;bottom:-20px;font-size:11px;color:var(--stone)}
+/* Anchors standing in for the page's buttons. */
+a.chip{display:inline-block;text-decoration:none;line-height:normal;cursor:pointer}
+a.rec{color:inherit;text-decoration:none}
+@media (max-width:900px){.grid2,.grid3{grid-template-columns:1fr}.brow{grid-template-columns:1fr 60px;grid-template-areas:"k v" "t t" "b b"}.brow .k{grid-area:k}.brow .track{grid-area:t}.brow .v{grid-area:v}.brow .b{grid-area:b}}

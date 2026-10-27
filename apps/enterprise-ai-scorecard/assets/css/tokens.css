@@ -1,0 +1,29 @@
+/* Design tokens: the :root custom properties every other file reads.
+   Moved verbatim from Enterprise_AI_Scorecard/index.html.
+
+   The one difference from the Director Scorecard's palette is --r4: five levels
+   need five colours, so Established is green (#4FA97C) and Embedded takes the
+   gold that instrument gives to its fourth and highest rung. Copying that file's
+   tokens would leave two levels the same colour. */
+
+:root{
+  --ink:#060D18; --ink-2:#0A1628; --ink-3:#0F1F38;
+  --paper:#E8F0FA; --stone:#A0B4CA; --stone-2:#6F84A0;
+  --blue:#3D82C4; --blue-2:#5A9FDA; --blue-3:#7AB8E8;
+  --gold:#E8933F; --gold-2:#C56A18;
+  --rule:rgba(61,130,196,.24); --rule-soft:rgba(61,130,196,.12);
+  --r1:#D2564E; --r2:#8A9BB0; --r3:#3D82C4; --r4:#4FA97C; --r5:#E8933F;
+  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --sans:'Public Sans','Helvetica Neue',Arial,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+  --num:'Public Sans','Helvetica Neue',Arial,sans-serif;
+}
+
+/* The <select> popup, the scrollbars and the autofill overlay are drawn by the
+   browser, not by this file, and without color-scheme they are drawn light: a
+   white list under --paper-coloured text, which is what made every option in
+   the size dropdown unreadable. Screen only -- print.css flips the ground to
+   white on purpose. */
+@media screen{
+  :root{color-scheme:dark}
+}

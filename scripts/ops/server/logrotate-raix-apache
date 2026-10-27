@@ -1,0 +1,35 @@
+# /etc/logrotate.d/raix-apache — the web server's request logs kept 30 days (directive C6)
+#
+# The privacy notice says "Server logs, which record the address of the device
+# you connect from, are kept for 30 days." Apache's access and error logs on
+# the server are such logs. This keeps 30 daily files and deletes the 31st.
+#
+# Install (as root):
+#   cp scripts/ops/server/logrotate-raix-apache /etc/logrotate.d/raix-apache
+#   logrotate --debug /etc/logrotate.d/raix-apache     # dry run: shows what it would do
+#
+# Check the paths first. Debian/Ubuntu: /var/log/apache2, reload "apache2".
+# Amazon Linux/RHEL: /var/log/httpd, reload "httpd" — swap the two lines
+# marked below. If the distribution already rotates these files (it usually
+# does, in /etc/logrotate.d/apache2 or httpd), set "rotate 30" and "daily"
+# THERE instead of adding this file: two configs for one file conflict.
+#
+# If the shadoka.com virtual host writes its own log files elsewhere, add
+# their paths to the list.
+
+/var/log/apache2/*.log {
+    daily
+    rotate 30
+    maxage 30
+    missingok
+    notifempty
+    compress
+    delaycompress
+    sharedscripts
+    postrotate
+        # Debian/Ubuntu:
+        if systemctl is-active --quiet apache2; then systemctl reload apache2 > /dev/null; fi
+        # Amazon Linux/RHEL (use instead of the line above):
+        # if systemctl is-active --quiet httpd; then systemctl reload httpd > /dev/null; fi
+    endscript
+}

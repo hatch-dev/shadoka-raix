@@ -1,0 +1,706 @@
+{
+  "slug": "ai-sovereignty-scorecard",
+  "version": "1.1",
+  "name": "AI Sovereignty — The Enterprise Scorecard",
+  "subtitle": "The AI Sovereignty Scorecard",
+  "scale": "5-level maturity scale",
+  "scoring_rule": "mean",
+  "rule_text": "organization level = band of the overall average of all answers; floor = weakest scored dimension, reported in analytics; coverage = dimensions with two or more respondents at Developing or above",
+  "source": "AI_Sovereignty_Scorecard/index.html",
+  "extracted_at": "2026-09-28T04:36:30.198Z",
+  "rungs": [
+    {
+      "value": 1,
+      "name": "Undeveloped",
+      "description": "Little or nothing is in place.",
+      "colour_hex": "#D2564E",
+      "colour_var": "var(--r1)"
+    },
+    {
+      "value": 2,
+      "name": "Emerging",
+      "description": "Present in places, carried by individuals.",
+      "colour_hex": "#8A9BB0",
+      "colour_var": "var(--r2)"
+    },
+    {
+      "value": 3,
+      "name": "Developing",
+      "description": "Being built, but not yet consistent.",
+      "colour_hex": "#3D82C4",
+      "colour_var": "var(--r3)"
+    },
+    {
+      "value": 4,
+      "name": "Established",
+      "description": "In place and generally reliable, with some gaps.",
+      "colour_hex": "#4FA97C",
+      "colour_var": "var(--r4)"
+    },
+    {
+      "value": 5,
+      "name": "Embedded",
+      "description": "Fully reliable.",
+      "colour_hex": "#E8933F",
+      "colour_var": "var(--r5)"
+    }
+  ],
+  "bands": [
+    {
+      "rung_value": 1,
+      "min": null,
+      "max": 1.8
+    },
+    {
+      "rung_value": 2,
+      "min": 1.8,
+      "max": 2.6
+    },
+    {
+      "rung_value": 3,
+      "min": 2.6,
+      "max": 3.4
+    },
+    {
+      "rung_value": 4,
+      "min": 3.4,
+      "max": 4.2
+    },
+    {
+      "rung_value": 5,
+      "min": 4.2,
+      "max": null
+    }
+  ],
+  "dimensions": [
+    {
+      "position": 1,
+      "code": "DAT",
+      "name": "Data Sovereignty",
+      "description": "Data sovereignty means retaining control over how your data is used. You need to know where AI systems store and process it, and which laws and contracts apply. You also need limits on provider use, a tested way to retrieve the data, and protection against unauthorized changes.",
+      "pressing_question": "What may providers do with our data, and have we tested whether we can retrieve it?",
+      "summary_line": "Your ability to decide where your data goes and how AI providers may use it.",
+      "failure_line": "The organization has not established what its AI providers may do with the data it shares.",
+      "guide": {
+        "what": "Data sovereignty is the ability to decide where your organization’s data can go and how others may use it. An employee might upload an internal document to an AI assistant. An AI forecasting model might use your sales records. In both cases, you need to know what happens to the data and retain the rights and practical controls your business requires.",
+        "why": "A provider’s terms can determine whether it keeps your data, uses it to train AI models, or lets you retrieve it. Those terms may differ from what your organization expects. Unauthorized changes to the data can also affect an AI system’s results. Clear permissions and effective checks help you protect the information your business relies on.",
+        "how": "Identify where your AI systems send, store, and process data. Record the laws and contractual requirements that apply. Set limits on provider use and check that the relevant settings and contract terms support those limits. Test whether you can export critical data and use it in another system. Assign responsibility for detecting and responding to unauthorized changes to the data."
+      },
+      "items": [
+        {
+          "position": 1,
+          "label": "Data locations and obligations",
+          "question": "How well does your organization understand where AI systems store and process its data, and which legal and contractual requirements apply?",
+          "anchor_low_label": "Largely unknown",
+          "anchor_low_text": "The organization has not identified important data flows, processing locations, or the requirements that apply to them.",
+          "anchor_high_label": "Mapped and current",
+          "anchor_high_text": "The organization keeps a current record of where important data is stored and processed. The record identifies the legal and contractual requirements that apply to each data flow."
+        },
+        {
+          "position": 2,
+          "label": "Control over provider use",
+          "question": "How effectively does your organization control what AI providers may do with the data it shares?",
+          "anchor_low_label": "Provider defaults",
+          "anchor_low_text": "The organization accepts providers’ standard terms without checking how they may access, retain, reuse, or train AI models on its data.",
+          "anchor_high_label": "Defined and enforced",
+          "anchor_high_text": "The organization sets explicit limits on provider use of its data. Contracts and technical settings support those limits, and someone checks that the controls work."
+        },
+        {
+          "position": 3,
+          "label": "Getting your data back",
+          "question": "How confidently could your organization retrieve its critical data from its AI systems and providers in a form it could use elsewhere?",
+          "anchor_low_label": "Unproven",
+          "anchor_low_text": "The organization has not established whether it could retrieve all the data it needs in a usable form, or what retrieval would cost.",
+          "anchor_high_label": "Demonstrated",
+          "anchor_high_text": "The organization has tested data retrieval and confirmed that another system can use the exported data. It knows how long retrieval takes and what it costs."
+        },
+        {
+          "position": 4,
+          "label": "Data integrity",
+          "question": "How effectively does your organization protect the data used by its AI systems from unauthorized changes or manipulation?",
+          "anchor_low_label": "Few checks in place",
+          "anchor_low_text": "The organization does not routinely check the data its AI systems use for unauthorized changes or manipulation.",
+          "anchor_high_label": "Actively protected",
+          "anchor_high_text": "Staff can trace critical data to its sources. Controls detect suspicious changes and allow affected data to be isolated before AI systems use it."
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "code": "INF",
+      "name": "Infrastructure Sovereignty",
+      "description": "Your AI services rely on providers and technical components. Infrastructure sovereignty means understanding those dependencies and deciding which powers providers may retain. It also requires the ability to inspect and intervene in your systems, and to keep critical operations running when a provider becomes unavailable.",
+      "pressing_question": "What can this provider change or withdraw, and how would we keep operating?",
+      "summary_line": "Your ability to inspect, operate, and maintain the technology your AI depends on.",
+      "failure_line": "The organization has not tested how critical operations would continue if an AI provider withdrew its service.",
+      "guide": {
+        "what": "Infrastructure sovereignty is your ability to direct and maintain the technology your AI depends on. That includes computing capacity, AI models, the software that connects them to business systems, and the applications people use. You need to choose provider relationships deliberately. You also need practical controls over running systems and a workable response if a service fails or is withdrawn.",
+        "why": "An AI application may rely on several suppliers even if your contract names only one. A change at one supplier can affect more than one part of your business. During an incident, staff may discover that they lack the information or permissions to respond. Testing recovery arrangements helps leaders judge how long an interruption might last.",
+        "how": "List the providers and components each critical AI service relies on. Check what providers can change, restrict, or withdraw. Record the safeguards you require and who has accepted the remaining risks. Test whether your staff can examine system activity and intervene. Then rehearse how the business would continue or recover if a provider stopped supplying the service."
+      },
+      "items": [
+        {
+          "position": 1,
+          "label": "Knowing your dependencies",
+          "question": "How complete is your organization’s record of the providers and technical components its AI systems depend on?",
+          "anchor_low_label": "Fragmented",
+          "anchor_low_text": "Teams know their own tools, but nobody has a complete view of the providers and components that critical AI services rely on.",
+          "anchor_high_label": "Complete and current",
+          "anchor_high_text": "The organization keeps a current map of critical AI services and the providers and components they rely on. It identifies where one provider or component supports several services."
+        },
+        {
+          "position": 2,
+          "label": "Accepting provider dependence",
+          "question": "Before adopting or renewing an AI service, how thoroughly does your organization assess the provider’s power to change the service, restrict its use, or withdraw it?",
+          "anchor_low_label": "Accepted by default",
+          "anchor_low_text": "The organization chooses services mainly for their features and cost. It gives little attention to what the provider can change, restrict, or withdraw.",
+          "anchor_high_label": "Assessed and accepted",
+          "anchor_high_text": "The organization records the provider’s powers and their possible effects on the business. It establishes the safeguards it needs, and a named owner approves the risks that remain."
+        },
+        {
+          "position": 3,
+          "label": "Exercising operational control",
+          "question": "How effectively can your organization inspect what its critical AI systems are doing and intervene when necessary?",
+          "anchor_low_label": "Limited ability to intervene",
+          "anchor_low_text": "Staff lack the information or controls they need to investigate problems and take corrective action.",
+          "anchor_high_label": "Effective operational controls",
+          "anchor_high_text": "Named staff can inspect system activity, change permissions or settings, isolate problems, and suspend operation when needed. The organization has tested these capabilities."
+        },
+        {
+          "position": 4,
+          "label": "Continuity without the provider",
+          "question": "How well has your organization demonstrated that it could continue or restore critical operations if an AI provider became unavailable or withdrew its service?",
+          "anchor_low_label": "Untested dependency",
+          "anchor_low_text": "The organization has not tested an alternative way to continue or restore operations. It does not know how long a disruption would last or how much of the business it would affect.",
+          "anchor_high_label": "Tested continuity",
+          "anchor_high_text": "Tests have shown that the organization can continue or restore critical operations within limits it has set for acceptable downtime and disruption."
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "code": "DEC",
+      "name": "Decisional Sovereignty",
+      "description": "Decisional sovereignty means retaining the ability to make independent judgments and understand how AI influences your organization’s decisions. People need the expertise to assess AI outputs and understand the assumptions behind them. They also need the authority to challenge decisions shaped by AI and regular opportunities to exercise their own judgment.",
+      "pressing_question": "Who can challenge an AI recommendation, what evidence can they examine, and what can they do if they disagree?",
+      "summary_line": "Your ability to judge AI outputs and retain human authority over important decisions.",
+      "failure_line": "The people reviewing AI recommendations lack the expertise, information, or authority to challenge them.",
+      "guide": {
+        "what": "Decisional sovereignty is your organization’s ability to understand, question, and direct the decisions AI makes or influences. An AI system can shape a decision by recommending an action. It can also shape the decision by choosing which information a person sees. The people responsible for those decisions need enough expertise, information, and authority to judge the system’s contribution and act on their own assessment.",
+        "why": "An AI-generated summary may leave out information that would change a manager’s decision. A recommendation may reflect priorities that differ from your organization’s. Human review provides limited protection if the reviewer cannot recognize those problems or act on them. Maintaining the expertise to assess AI outputs is therefore part of maintaining control over decisions.",
+        "how": "Identify where AI makes decisions or shapes the information people use to decide. For important decisions, test outputs against your organization’s purposes, values, and decision criteria. Specify who can reject a recommendation, stop an action, or refer a concern to someone with greater authority. Give those people regular practice in assessing the underlying problem independently."
+      },
+      "items": [
+        {
+          "position": 1,
+          "label": "Seeing AI’s influence",
+          "question": "How clearly does your organization understand where AI influences important decisions, including through the information it selects and presents to people?",
+          "anchor_low_label": "Influence largely unknown",
+          "anchor_low_text": "The organization reviews decisions made by AI but gives little attention to how AI recommendations, rankings, summaries, and dashboards influence people’s decisions.",
+          "anchor_high_label": "Explicitly mapped",
+          "anchor_high_text": "The organization records where AI makes or influences important decisions, including where it selects and presents information. A named person is accountable for each use."
+        },
+        {
+          "position": 2,
+          "label": "Examining assumptions",
+          "question": "How systematically does your organization examine the assumptions behind AI outputs against its own purposes, values, and decision criteria?",
+          "anchor_low_label": "Accepted at face value",
+          "anchor_low_text": "People judge AI outputs mainly by whether they appear useful or plausible. They rarely examine the assumptions behind them.",
+          "anchor_high_label": "Regularly examined",
+          "anchor_high_text": "The organization uses tests and reviews to investigate assumptions that affect AI outputs. It compares them with its own purposes, values, and decision criteria, and addresses conflicts."
+        },
+        {
+          "position": 3,
+          "label": "Meaningful human authority",
+          "question": "How effectively can accountable people challenge, override, or stop decisions shaped by AI?",
+          "anchor_low_label": "Nominal oversight",
+          "anchor_low_text": "Reviewers lack the information, time, or authority to assess and challenge decisions shaped by AI.",
+          "anchor_high_label": "Effective authority",
+          "anchor_high_text": "Reviewers have the information, time, and authority to reject recommendations or stop actions. They know whom to involve when a decision exceeds their authority, and that process works in practice."
+        },
+        {
+          "position": 4,
+          "label": "Keeping judgment in use",
+          "question": "How deliberately does your organization preserve the human expertise needed to judge AI outputs independently?",
+          "anchor_low_label": "Skills are not maintained",
+          "anchor_low_text": "AI takes over analytical work, but the organization has no practices to maintain the human skills needed to assess its results.",
+          "anchor_high_label": "Actively maintained",
+          "anchor_high_text": "People responsible for assessing AI outputs regularly practice and demonstrate independent judgment. Their work and professional development help them maintain the expertise they need."
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "code": "ADT",
+      "name": "Adaptive Sovereignty",
+      "description": "Adaptive sovereignty means being able to change your AI choices as your needs and the available technology change. You need an independent view of the options and a way to evaluate promising alternatives. You also need the resources and authority to act when a change is justified.",
+      "pressing_question": "How do we identify and evaluate better AI options, and who can authorize a change?",
+      "summary_line": "Your ability to evaluate alternatives and change AI systems, providers, or priorities.",
+      "failure_line": "The organization can identify a better AI option but lacks a practical way to adopt it or the authority to approve the change.",
+      "guide": {
+        "what": "Adaptive sovereignty is the capacity to reassess an AI commitment and change it when there is good reason to do so. That requires people who can identify and judge alternatives without relying solely on their current providers. It also requires practical arrangements for switching and a decision-making body that can redirect the money and people involved.",
+        "why": "Your organization may miss a useful alternative if its view of AI comes mainly from one supplier. Even when people recognize a better option, contracts, connections between systems, or missing skills can make a move difficult. A review can also stall if nobody has the authority to change existing commitments. These obstacles need to be addressed separately.",
+        "how": "Choose evaluation criteria based on your organization’s needs. Assign people to review new AI models, providers, and approaches on a regular schedule. Work out what a switch would require, including costs, contract terms, changes to connected systems, and staff skills. Give a senior group authority to act on these reviews and check that its decisions are carried out."
+      },
+      "items": [
+        {
+          "position": 1,
+          "label": "Independent assessment of AI options",
+          "question": "How independently does your organization decide which AI approaches and alternatives are worth considering?",
+          "anchor_low_label": "Vendor-led outlook",
+          "anchor_low_text": "Current providers largely determine what the organization believes AI can do and which alternatives it considers.",
+          "anchor_high_label": "Independent outlook",
+          "anchor_high_text": "The organization sets its own criteria for evaluating AI options. It regularly checks providers’ claims against independent evidence and competing approaches."
+        },
+        {
+          "position": 2,
+          "label": "Learning about alternatives",
+          "question": "How systematically does your organization identify and evaluate alternatives to its current AI models, providers, and ways of working?",
+          "anchor_low_label": "Occasional discovery",
+          "anchor_low_text": "The organization considers alternatives mainly when a problem arises or someone encounters a new product.",
+          "anchor_high_label": "Continuing evaluation",
+          "anchor_high_text": "Named people review developments on a regular schedule and evaluate promising alternatives against the organization’s needs."
+        },
+        {
+          "position": 3,
+          "label": "Practical ability to switch",
+          "question": "How feasible would it be for your organization to replace an important AI system or provider when a better option justified the move?",
+          "anchor_low_label": "Effectively locked in",
+          "anchor_low_text": "Contracts, technical connections, costs, or missing skills make switching impractical. Alternatively, the organization has not established what a switch would require.",
+          "anchor_high_label": "Switching is feasible",
+          "anchor_high_text": "The organization has established a workable way to replace each critical AI system or provider. It knows the costs, contractual rights, technical changes, and skills a switch would require."
+        },
+        {
+          "position": 4,
+          "label": "Authority to change course",
+          "question": "How effectively does your organization act on reviews of its AI investments by ending, replacing, expanding, or changing the priority of initiatives?",
+          "anchor_low_label": "Review without action",
+          "anchor_low_text": "Reviews happen only occasionally or produce recommendations that nobody has authority to implement. Existing commitments continue largely unchanged.",
+          "anchor_high_label": "Reviews lead to action",
+          "anchor_high_text": "A senior group meets regularly, has a named owner, and reports to the board. It uses its authority to change AI investments, systems, and priorities, and follows through on those decisions."
+        }
+      ]
+    }
+  ],
+  "reference": {
+    "sectors": [
+      "Financial Services",
+      "Healthcare & Life Sciences",
+      "Technology",
+      "Government & Public Sector",
+      "Manufacturing & Industrial",
+      "Retail & Consumer",
+      "Energy & Utilities",
+      "Education",
+      "Professional Services",
+      "Other"
+    ],
+    "organisation_sizes": [
+      "1–50",
+      "51–250",
+      "251–1,000",
+      "1,001–5,000",
+      "5,001–20,000",
+      "20,000+"
+    ],
+    "roles": [
+      "Chief Executive Officer",
+      "Chief Information Officer",
+      "Chief Technology Officer",
+      "Chief Data / AI Officer",
+      "Chief Operating Officer",
+      "Chief Financial Officer",
+      "Chief Risk / Compliance Officer",
+      "Chief Human Resources Officer",
+      "Chief Information Security Officer",
+      "Head of Transformation",
+      "Head of Data Science / AI",
+      "Business Unit Leader",
+      "Enterprise Architect",
+      "Board Director",
+      "Other"
+    ],
+    "tenures": [
+      "Under 1 year",
+      "1–3 years",
+      "4–6 years",
+      "7–10 years",
+      "Over 10 years"
+    ],
+    "guide_tabs": [
+      {
+        "key": "what",
+        "label": "What it is"
+      },
+      {
+        "key": "why",
+        "label": "Why it matters"
+      },
+      {
+        "key": "how",
+        "label": "How to build it"
+      }
+    ],
+    "correlation_metrics": [
+      {
+        "key": "agenda",
+        "label": "Executive meetings with AI as a decision item"
+      },
+      {
+        "key": "edu",
+        "label": "Hours of AI education taken"
+      },
+      {
+        "key": "systems",
+        "label": "AI systems on the inventory"
+      }
+    ]
+  },
+  "thresholds": {
+    "correlation_min_n": 30
+  },
+  "identity": {
+    "email_pattern": "^[^\\s@,;:<>()[\\]\\\\\"]+@[A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?(\\.[A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?)*\\.[A-Za-z]{2,24}$",
+    "blocked_email_domains": [
+      "example.com",
+      "example.org",
+      "example.net",
+      "test.com",
+      "email.com",
+      "mailinator.com",
+      "yopmail.com",
+      "guerrillamail.com",
+      "10minutemail.com",
+      "tempmail.com",
+      "temp-mail.org",
+      "trashmail.com",
+      "sharklasers.com",
+      "throwawaymail.com",
+      "getnada.com",
+      "maildrop.cc",
+      "dispostable.com",
+      "fakeinbox.com"
+    ]
+  },
+  "synthetic": {
+    "archetypes": {
+      "established": {
+        "weight": 0.1,
+        "targets": [
+          4.4,
+          4.3,
+          4.2,
+          4.1
+        ],
+        "emerging": false,
+        "note": "Strong practices across all four dimensions, with adaptation still improving."
+      },
+      "building": {
+        "weight": 0.2,
+        "targets": [
+          3.6,
+          3.5,
+          3.3,
+          3.1
+        ],
+        "emerging": false,
+        "note": "Controls are being established and reviewed, with some inconsistency."
+      },
+      "fragmented": {
+        "weight": 0.26,
+        "targets": [
+          2.6,
+          2.4,
+          2.3,
+          2.2
+        ],
+        "emerging": true,
+        "note": "Useful practices exist locally but lack consistent ownership."
+      },
+      "dataLed": {
+        "weight": 0.14,
+        "targets": [
+          4.2,
+          3.2,
+          2.7,
+          2.5
+        ],
+        "emerging": false,
+        "note": "Data controls are strong; independent judgment and adaptation need attention."
+      },
+      "infrastructureLed": {
+        "weight": 0.16,
+        "targets": [
+          3.5,
+          4.2,
+          2.5,
+          2.4
+        ],
+        "emerging": false,
+        "note": "Technical control is strong; human judgment and freedom to change lag behind."
+      },
+      "starting": {
+        "weight": 0.14,
+        "targets": [
+          1.8,
+          1.9,
+          1.7,
+          1.6
+        ],
+        "emerging": false,
+        "note": "Most sovereignty practices have yet to be established."
+      }
+    },
+    "sector_prior": {
+      "Financial Services": [
+        0.3,
+        0.1,
+        0.2,
+        0
+      ],
+      "Healthcare & Life Sciences": [
+        0.3,
+        0,
+        0.1,
+        -0.1
+      ],
+      "Technology": [
+        0.1,
+        0.4,
+        0,
+        0.3
+      ],
+      "Government & Public Sector": [
+        0.2,
+        0,
+        0.1,
+        -0.2
+      ],
+      "Manufacturing & Industrial": [
+        0,
+        0.1,
+        -0.1,
+        0
+      ],
+      "Retail & Consumer": [
+        0,
+        0,
+        -0.1,
+        0.1
+      ],
+      "Energy & Utilities": [
+        0.1,
+        0.2,
+        0,
+        -0.1
+      ],
+      "Education": [
+        0,
+        -0.2,
+        0.1,
+        0.1
+      ],
+      "Professional Services": [
+        0.1,
+        0,
+        0.2,
+        0.1
+      ],
+      "Other": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "role_bias": {
+      "Chief Executive Officer": [
+        0.1,
+        0,
+        0.3,
+        0.3
+      ],
+      "Chief Information Officer": [
+        0.2,
+        0.4,
+        0,
+        0.1
+      ],
+      "Chief Technology Officer": [
+        0.1,
+        0.4,
+        0,
+        0.2
+      ],
+      "Chief Data / AI Officer": [
+        0.4,
+        0.2,
+        0.1,
+        0.1
+      ],
+      "Chief Operating Officer": [
+        0,
+        0.2,
+        0.1,
+        0.1
+      ],
+      "Chief Risk / Compliance Officer": [
+        0.3,
+        0.1,
+        0.2,
+        -0.1
+      ],
+      "Chief Human Resources Officer": [
+        0,
+        -0.1,
+        0.3,
+        0.1
+      ],
+      "Chief Information Security Officer": [
+        0.3,
+        0.3,
+        0,
+        -0.1
+      ],
+      "Head of Transformation": [
+        0.1,
+        0.1,
+        0.2,
+        0.3
+      ],
+      "Business Unit Leader": [
+        0,
+        -0.1,
+        0.1,
+        0.1
+      ]
+    },
+    "org_prefix": [
+      "Meridian",
+      "Northgate",
+      "Apex",
+      "ClearPath",
+      "Halcyon",
+      "Brightwater",
+      "Summit",
+      "Ardent",
+      "Kestrel",
+      "Lumen",
+      "Redwood",
+      "Harbor",
+      "Vantage",
+      "Pinecrest",
+      "Silverline",
+      "Cobalt",
+      "Atlas",
+      "Beacon",
+      "Foxglove",
+      "Granite",
+      "Orchard",
+      "Tidewater",
+      "Ironbridge",
+      "Larkspur",
+      "Windward"
+    ],
+    "org_suffix": {
+      "Financial Services": [
+        "Capital Group",
+        "Bancorp",
+        "Insurance",
+        "Asset Management",
+        "Credit Union"
+      ],
+      "Healthcare & Life Sciences": [
+        "Health System",
+        "Medical Group",
+        "Therapeutics",
+        "Diagnostics",
+        "Care Network"
+      ],
+      "Technology": [
+        "Software",
+        "Systems",
+        "Labs",
+        "Cloud",
+        "Robotics"
+      ],
+      "Government & Public Sector": [
+        "Transit Authority",
+        "County Services",
+        "Housing Agency",
+        "Revenue Office",
+        "Port Authority"
+      ],
+      "Manufacturing & Industrial": [
+        "Manufacturing",
+        "Industries",
+        "Components",
+        "Automation",
+        "Foundry"
+      ],
+      "Retail & Consumer": [
+        "Retail Co.",
+        "Brands",
+        "Marketplace",
+        "Grocers",
+        "Home"
+      ],
+      "Energy & Utilities": [
+        "Energy",
+        "Power",
+        "Water",
+        "Grid Services",
+        "Renewables"
+      ],
+      "Education": [
+        "Learning Trust",
+        "University",
+        "Academy",
+        "School District",
+        "College"
+      ],
+      "Professional Services": [
+        "Advisory Partners",
+        "Consulting",
+        "Legal",
+        "Accounting",
+        "Search"
+      ],
+      "Other": [
+        "Holdings",
+        "Group",
+        "Partners",
+        "Collective",
+        "Trust"
+      ]
+    },
+    "first_names": [
+      "Dana",
+      "Rahul",
+      "Priya",
+      "Tom",
+      "Aisha",
+      "Marcus",
+      "Elena",
+      "Kenji",
+      "Sofia",
+      "Omar",
+      "Ingrid",
+      "Wei"
+    ],
+    "last_names": [
+      "Whitfield",
+      "Menon",
+      "Natarajan",
+      "Reyes",
+      "Bello",
+      "Okafor",
+      "Lindqvist",
+      "Tanaka",
+      "Marchetti",
+      "Haddad",
+      "Sorensen",
+      "Zhang"
+    ]
+  }
+}

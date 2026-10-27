@@ -1,0 +1,104 @@
+/* The research report.
+   Print-first: a light ground, serif headings, and page breaks chosen rather
+   than left to chance. It reads the same on screen, because a report someone
+   proofreads on screen and then prints should not be two different documents.
+
+   No dark theme here on purpose. This is the one surface whose destination is
+   paper or a PDF that gets emailed. */
+
+:root{
+  --ink:#111820; --ink-soft:#3A4652; --muted:#6B7885;
+  --rule:#D5DDE4; --rule-soft:#E8EDF1;
+  --blue:#2F6FA8; --gold:#B8720F;
+  --r1:#C0463E; --r2:#7A8899; --r3:#2F6FA8; --r4:#B8720F;
+  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --sans:'Public Sans','Helvetica Neue',Arial,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#fff;color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;
+}
+.sheet{max-width:920px;margin:0 auto;padding:40px 44px 80px}
+
+h1{font-family:var(--serif);font-weight:700;font-size:30px;letter-spacing:-.02em;line-height:1.15}
+h2{font-family:var(--serif);font-weight:700;font-size:20px;margin:34px 0 12px;
+   padding-bottom:6px;border-bottom:1px solid var(--rule)}
+h3{font-family:var(--serif);font-weight:600;font-size:16px;margin:18px 0 8px}
+p{margin-bottom:10px;max-width:76ch}
+.muted{color:var(--muted)}
+.small{font-size:12.5px}
+.mono{font-family:var(--mono)}
+
+/* masthead */
+.masthead{border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:8px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+         color:var(--muted);margin-bottom:6px}
+.meta{display:flex;gap:26px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:10px}
+.meta b{color:var(--ink);font-weight:600}
+
+/* the warning that has to survive being photocopied */
+.scope-warning{
+  border:1.5px solid var(--r1);background:#FBF0EF;color:#7A2B26;
+  padding:12px 14px;border-radius:3px;margin:16px 0;font-size:13px;
+}
+.scope-warning b{color:var(--r1)}
+
+.figures{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:16px 0 4px}
+.figure{border:1px solid var(--rule);border-radius:3px;padding:12px 14px}
+.figure .v{font-size:24px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.figure .k{font-size:11.5px;color:var(--muted);margin-top:2px}
+
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+th{text-align:left;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+   color:var(--muted);padding:0 9px 6px;border-bottom:1px solid var(--rule)}
+td{padding:7px 9px;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+.num{text-align:right;font-family:var(--mono);font-size:12px}
+tbody tr:last-child td{border-bottom:1px solid var(--rule)}
+
+.bar{height:6px;background:var(--rule-soft);border-radius:2px;overflow:hidden;min-width:90px}
+.bar i{display:block;height:100%;background:var(--c,var(--blue))}
+.stack{display:flex;height:8px;border-radius:2px;overflow:hidden;min-width:110px}
+
+.code{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;
+      border:1px solid var(--rule);border-radius:2px;padding:1px 5px;margin-right:5px}
+.tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+     padding:1px 5px;border-radius:2px;background:#FBF0EF;color:var(--r1)}
+
+.note{border-left:3px solid var(--gold);padding:8px 0 8px 12px;margin:12px 0;
+      font-size:13px;color:var(--ink-soft)}
+.caveats{border:1px solid var(--rule);border-radius:3px;padding:16px 18px;margin-top:18px}
+.caveats li{margin:0 0 7px 18px;font-size:13px;color:var(--ink-soft)}
+
+.statement{font-size:12.5px;max-width:none}
+footer.report{margin-top:34px;border-top:1px solid var(--rule);padding-top:12px;
+              font-size:11.5px;color:var(--muted)}
+
+.toolbar{
+  position:sticky;top:0;background:#fff;border-bottom:1px solid var(--rule);
+  padding:10px 44px;display:flex;gap:10px;justify-content:flex-end;align-items:center;
+}
+.toolbar a,.toolbar button{
+  font-family:inherit;font-size:13px;border:1px solid var(--rule);background:#fff;
+  color:var(--ink);border-radius:3px;padding:6px 13px;cursor:pointer;text-decoration:none;
+}
+.toolbar button{border-color:var(--ink);font-weight:600}
+
+@media print{
+  .toolbar{display:none}
+  .sheet{max-width:none;padding:0}
+  body{font-size:10.5pt}
+  h1{font-size:20pt}
+  h2{font-size:14pt;margin-top:8mm}
+  h3{font-size:11.5pt}
+  table{font-size:9pt;page-break-inside:auto}
+  tr{page-break-inside:avoid}
+  thead{display:table-header-group}   /* repeat headers across pages */
+  .figures{grid-template-columns:repeat(4,1fr)}
+  .page-break{page-break-before:always}
+  .avoid-break{page-break-inside:avoid}
+  a[href]::after{content:""}
+  @page{margin:16mm 14mm;size:A4}
+}

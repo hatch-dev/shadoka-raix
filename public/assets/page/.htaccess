@@ -1,0 +1,7 @@
+# Written by Platform\Core\PageAssets. Every file here is named by its
+# content, so it can be kept for a year: a change is a new name.
+<IfModule mod_headers.c>
+    <FilesMatch "\.(js|woff2?|webp|png|jpe?g|avif)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+</IfModule>

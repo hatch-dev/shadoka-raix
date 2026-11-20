@@ -430,7 +430,9 @@ final class ScorecardPage
         // The meta description too: the supplied page has none (PageSpeed's SEO
         // check flags it) and the platform's own layouts write one.
         $tags  = '<meta name="description" content="' . e(self::SHARE_DESCRIPTION ?: ($this->app->description ?? '')) . '">'
-               . str_replace("\n", '', social_meta($this->app->slug, $title, self::SHARE_DESCRIPTION)) . favicon_data_link();
+               . str_replace("\n", '', social_meta($this->app->slug, $title, self::SHARE_DESCRIPTION)) . favicon_data_link()
+                 // Copy protection (platform/assets/js/copy-protect.js), same line.
+               . copy_protection_tag();
 
         $lines[self::TITLE_LINE - 1] = rtrim($line, "\r") . $tags . $eol;
 

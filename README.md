@@ -247,6 +247,28 @@ admin console picks up its nav sections and capabilities from the manifest.
 **The slug is frozen once data references it** — it appears in table names,
 published asset paths, admin capabilities and public URLs simultaneously.
 
+## Copy protection
+
+Every page (the public scorecards and their in-page admin views, the admin
+consoles, the sign-in pages and `RAIX_Index.html`) loads
+`platform/assets/js/copy-protect.js`, a port of the free features of the
+WordPress plugin "WP Content Copy Protection & No Right Click": no right
+click, text selection, copy/cut or image dragging, and Ctrl/Cmd + A, C, X, S,
+V, U and the developer-tools shortcuts (F12, Ctrl+Shift+I/J/C,
+Cmd+Option+I/J/C/U) do nothing. A short notice says
+"Content is protected." Form fields are exempt, so people can still type,
+select and paste in them. Printing is not blocked.
+
+It is a deterrent, not a security control: switching JavaScript off, the
+browser menu, View Source or a screenshot all get past it.
+`COPY_PROTECTION=false` in `.env` turns it off everywhere; the message is
+`config/app.php` › `copy_protection.message`. On the five supplied pages
+the tag rides on the share-card line (line 6, added as the page is sent,
+after the C5 copy), so it is one more KNOWN DEVIATION to report to SHADOKA.
+`RAIX_Index.html` names the script by its `/RAIX/dev/assets/...` path, as it
+does its other assets, with a hand-set `?v=`: bump it whenever the script
+changes, or browsers keep the cached copy.
+
 ## Rules this codebase holds to
 
 - **A submission pins to an instrument version.** Published instruments are

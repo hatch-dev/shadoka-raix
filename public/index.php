@@ -136,7 +136,8 @@ function render_not_found(Request $request): string
         '<!doctype html><html lang="en"><head><meta charset="utf-8">'
         . '<title>Not found · %s</title>'
         . '<style>body{background:#060D18;color:#E8F0FA;font:16px/1.6 system-ui,sans-serif;padding:60px 24px;max-width:640px;margin:0 auto}'
-        . 'h1{font-size:22px;margin:0 0 8px}code{color:#7AB8E8}a{color:#5A9FDA}ul{padding-left:18px}</style></head>'
+        . 'h1{font-size:22px;margin:0 0 8px}code{color:#7AB8E8}a{color:#5A9FDA}ul{padding-left:18px}</style>'
+        . copy_protection_tag() . '</head>'
         . '<body><h1>Not found</h1><p style="color:#A0B4CA">No route matches <code>%s</code>.</p>'
         . '<p style="color:#A0B4CA">Apps mounted here:</p><ul>%s</ul></body></html>',
         e(config('app.name')),

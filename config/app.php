@@ -23,6 +23,14 @@ return [
     // reads the same way: "Sep 22, 2026".
     'date_format' => 'M j, Y',
 
+    // Copy protection on every page (platform/assets/js/copy-protect.js):
+    // no right click, selection, copy or image drag outside form fields.
+    // COPY_PROTECTION=false in .env turns it off everywhere at once.
+    'copy_protection' => [
+        'enabled' => filter_var(env('COPY_PROTECTION', true), FILTER_VALIDATE_BOOL),
+        'message' => 'Content is protected.',
+    ],
+
     'owner'     => 'SHADOKA, LLC',
     'copyright' => '© 2026 SHADOKA, LLC. All rights reserved.',
 ];

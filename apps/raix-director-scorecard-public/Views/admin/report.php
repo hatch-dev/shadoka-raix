@@ -23,6 +23,8 @@ $date = static fn (?string $d): string => $d === null
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="<?= e(asset('platform/css/report.css')) ?>">
+<?php /* Copy protection: platform/assets/js/copy-protect.js */ ?>
+<?= copy_protection_tag() ?>
 </head>
 <body>
 

@@ -41,6 +41,8 @@ foreach (['tokens', 'base', 'components', 'scorecard'] as $sheet): ?>
 <?php /* The browser's own "Save as PDF", alongside the drawn document the
          results page's button produces. Needs no library on the server. */ ?>
 <link rel="stylesheet" media="print" href="<?= e(app_asset($slug, 'css/print.css')) ?>">
+<?php /* Copy protection: platform/assets/js/copy-protect.js */ ?>
+<?= copy_protection_tag() ?>
 </head>
 <body>
 

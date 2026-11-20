@@ -390,6 +390,25 @@ if (!function_exists('favicon_data_link')) {
     }
 }
 
+if (!function_exists('copy_protection_tag')) {
+    /**
+     * The copy-protection script as one <script> tag, on one line, for every
+     * page's <head>: the platform's layouts and, on the share-card line, the
+     * supplied scorecard pages (whose CSP allows scripts from 'self').
+     * Empty when config app.copy_protection.enabled is off.
+     * See platform/assets/js/copy-protect.js for what it does and does not do.
+     */
+    function copy_protection_tag(): string
+    {
+        if (!config('app.copy_protection.enabled', true)) {
+            return '';
+        }
+
+        return '<script src="' . e(asset('platform/js/copy-protect.js')) . '"'
+            . ' data-message="' . e((string) config('app.copy_protection.message', 'Content is protected.')) . '" defer></script>';
+    }
+}
+
 if (!function_exists('social_meta')) {
     /**
      * The share-card tags (Open Graph + Twitter) for one app's public pages.
